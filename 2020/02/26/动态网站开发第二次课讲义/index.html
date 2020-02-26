@@ -1,0 +1,391 @@
+
+<!DOCTYPE html>
+<html lang="中文" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>动态网站开发第二次课讲义 - 虚掷的青春</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="动态网站开发第二次课讲义
+一、学习目标
+1**、了解tomcat**目录结构
+2**、了解java web**项目目录结构
+3**、掌握jsp**概念
+4**、了解Servlet**概念，创建ser,"> 
+    <meta name="author" content="刘亚平"> 
+    <link rel="alternative" href="atom.xml" title="虚掷的青春" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">虚掷的青春</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">动态网站开发第二次课讲义</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">动态网站开发第二次课讲义</h1>
+        <div class="stuff">
+            <span>二月 26, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>动态网站开发第二次课讲义</p>
+<p><strong>一、学习目标</strong></p>
+<p><strong>1**</strong>、了解tomcat<strong>**目录结构</strong></p>
+<p><strong>2**</strong>、了解java web<strong>**项目目录结构</strong></p>
+<p><strong>3**</strong>、掌握jsp<strong>**概念</strong></p>
+<p><strong>4**</strong>、了解Servlet<strong>**概念，创建servlet</strong></p>
+<p><strong>5**</strong>、掌握Servlet<strong>**的执行原理和生命周期</strong></p>
+<p><strong>6**</strong>、servlet<strong>**系统结构</strong></p>
+<p><strong>7**</strong>、理解HTTP<strong><strong>协议及HTTP</strong></strong>请求的结构（请求行，头，体）**</p>
+<p><strong>8**</strong>、熟练掌握使用HttpServeltRequest<strong>**获取常用的头信息，请求参数，请求参数乱码处理，转发的特点</strong></p>
+<p><strong>9**</strong>、熟练掌握登陆案例**</p>
+<p><strong>二、具体讲解</strong></p>
+<p><strong>2.1**</strong>、<strong><strong>tomcat</strong></strong>目录结构详解**</p>
+<p>打开tomcat的解压之后的目录可以看到如下的目录结构：</p>
+<p><img src="/images/15.png" alt="image"></p>
+<p><strong>1**</strong>、bin<strong>**：</strong></p>
+<p>bin目录主要是用来存放tomcat的命令，主要有两大类，一类是以.sh结尾的（linux命令），另一类是以.bat结尾的（windows命令）。可以把命令配置在环境变量里边</p>
+<p>startup 用来启动tomcat </p>
+<p>shutdown 用来关闭tomcat </p>
+<p>修改catalina可以设置tomcat的内存</p>
+<p><strong>2**</strong>、webapps<strong>**：</strong></p>
+<p>webapps目录用来存放应用程序，当tomcat启动时会去加载webapps目录下的应用程序。可以以文件夹、war包、jar包的形式发布应用。<br> 当然，你也可以把应用程序放置在磁盘的任意位置，在配置文件中映射好就行。 </p>
+<p><strong>3**</strong>、conf**</p>
+<p>conf目录主要是用来存放tomcat的一些配置文件。</p>
+<p>server.xml可以设置端口号、设置域名或IP、默认加载的项目、请求编码 </p>
+<p>web.xml可以设置tomcat支持的文件类型 </p>
+<p>context.xml可以用来配置数据源之类的 </p>
+<p>tomcat-users.xml用来配置管理tomcat的用户与权限</p>
+<p><strong>4**</strong>、lib:**</p>
+<p>lib目录主要用来存放tomcat运行需要加载的jar包。<br> 例如，像连接数据库的jdbc的包我们可以加入到lib目录中来。</p>
+<p><strong>5**</strong>、logs<strong>**：</strong></p>
+<p>logs目录用来存放tomcat在运行过程中产生的日志文件，非常重要的是在控制台输出的日志。（清空不会对tomcat运行带来影响） </p>
+<p>在windows环境中，控制台的输出日志在catalina.xxxx-xx-xx.log文件中 </p>
+<p>在linux环境中，控制台的输出日志在catalina.out文件中</p>
+<p><strong>6**</strong>、temp<strong>**：</strong></p>
+<p>temp目录用户存放tomcat在运行过程中产生的临时文件。（清空不会对tomcat运行带来影响</p>
+<p><strong>7**</strong>、work:**</p>
+<h2 id="work目录用来存放tomcat在运行时的编译后文件，例如JSP编译后的文件。-清空work目录，然后重启tomcat，可以达到清除缓存的作用。"><a href="#work目录用来存放tomcat在运行时的编译后文件，例如JSP编译后的文件。-清空work目录，然后重启tomcat，可以达到清除缓存的作用。" class="headerlink" title="work目录用来存放tomcat在运行时的编译后文件，例如JSP编译后的文件。   清空work目录，然后重启tomcat，可以达到清除缓存的作用。"></a>work目录用来存放tomcat在运行时的编译后文件，例如JSP编译后的文件。   清空work目录，然后重启tomcat，可以达到清除缓存的作用。</h2><p><strong>2.2**</strong>、了解<strong><strong>java web</strong></strong>项目目录结构**</p>
+<p><img src="/images/16.png" alt="image"></p>
+<p><strong>web.xml**</strong>配置文件**</p>
+<p><img src="/images/17.png" alt="image"></p>
+<p>项目启动时会加载web.xml配置文件</p>
+<p>Web.xml文件的作用如下</p>
+<p><strong>1**</strong>、指定欢迎页面**，例如：</p>
+<p><img src="/images/18.png" alt="image"><br> 上面的例子指定了几个欢迎页面，显示时按顺序从第一个找起，如果第一个存在，就显示第一个，后面的不起作用。如果第一个不存在，就找第二个，以此类推。</p>
+<p><strong>2**</strong>、配置servlet<strong><strong>、filter</strong></strong>、**</p>
+<p>我们以后创建的servlet与filter需要在web.xml中配置才会生效，至于怎么配置后边的课程讲</p>
+<p><strong>2.3**</strong>、掌握<strong><strong>jsp</strong></strong>概念**</p>
+<p><strong>1**</strong>、基本概念**</p>
+<p><strong>JSP**</strong>是运行在服务器端的程序，负责java web<strong>**项目中的数据展示，以及前后数据的中转与交互</strong></p>
+<p><strong>JSP**</strong>页面中，可以写html<strong><strong>、css</strong></strong>、js<strong><strong>代码、java</strong></strong>代码、el<strong><strong>表达式、jstl</strong></strong>标签**</p>
+<p><img src="/images/19.png" alt="image"></p>
+<p>分别在jsp里边写对应的代码</p>
+<p>**<img src="/images/20.png" alt="image"></p>
+<p><strong>由于以后jsp**</strong>里边不写java<strong>**代码，就不过多演示了</strong></p>
+<p><strong>注意：如何设置jsp**</strong>的编码格式**</p>
+<p><strong>点击window——–&gt;preferences</strong></p>
+<p><strong>然后搜索jsp</strong></p>
+<p><strong>点击JSP Files**</strong>选择utf-8<strong>**编码格式</strong></p>
+<p><img src="/images/21.png" alt="image"></p>
+<p><strong>2**</strong>、jsp<strong>**的执行流程</strong></p>
+<p><strong>翻译阶段</strong></p>
+<p>   当Web容器接收到JSP请求时，首先会对JSP文件进行翻译，将编写好的JSP文件通过JSP容器转换成可识别的Java源代码。</p>
+<p><strong>编译阶段</strong></p>
+<p>​    将Java源文件编译成可执行的字节码文件</p>
+<p><strong>执行阶段</strong></p>
+<p>   经过翻译和编译两个阶段，生成了可执行的二进制字节码文件，此时进入执行阶段。当执行结束后，得到处理请求的结果，把生成的结果页面返回到浏览器客户端显示。</p>
+<p><img src="/images/22.png" alt="image"></p>
+<p><strong>2.4**</strong>、了解<strong><strong>Servlet</strong></strong>概念<strong><strong>,</strong></strong>创建<strong>**servlet</strong></p>
+<p><strong>Servlet**</strong>概念以及作用**</p>
+<p>Java Servlet 是运行在 Web 服务器或应用服务器上的程序，它是作为来自 Web 浏览器的请求和 HTTP 服务器上的数据库或应用程序之间的中间层。</p>
+<p>   用户在jsp页面上输入数据，可以提交给servlet做处理，java代码读到的数据，可以通过servlet交给jsp页面去展示。这在项目中就充当了，控制与中转的功能。</p>
+<p><strong>创建servlet</strong></p>
+<p>\1. 创建JavaEE项目</p>
+<p>\2. 定义一个类，实现Servlet接口</p>
+<p><img src="/images/23.png" alt="image"></p>
+<p>\3. 实现接口中的抽象方法</p>
+<p>\4. 配置Servlet</p>
+<p>在web.xml中配置：</p>
+<!--配置Servlet -->
+
+<servlet>
+
+<p><servlet-name>ServletDemo1</servlet-name></p>
+<p><servlet-class>com.dzqc.web.servlet.ServletDemo1</servlet-class></p>
+</servlet>
+
+<servlet-mapping>
+
+<p><servlet-name>ServletDemo1</servlet-name></p>
+<p><url-pattern>/demo1</url-pattern></p>
+</servlet-mapping>
+
+<p><strong>2.5**</strong>、<strong><strong>servlet</strong></strong>执行原理**</p>
+<p>\1. 当服务器接受到客户端浏览器的请求后，会解析请求URL路径，获取访问的Servlet的资源路径</p>
+<p>\2. 查找web.xml文件，是否有对应的<url-pattern>标签体内容。</p>
+<p>\3. 如果有，则在找到对应的<servlet-class>全类名</p>
+<p>\4. tomcat会将字节码文件加载进内存，并且创建其对象</p>
+<p>\5. 调用其方法</p>
+<p><strong>2.6**</strong>、<strong><strong>servlet</strong></strong>生命周期**</p>
+<p>\1. 被创建：执行init方法，只执行一次</p>
+<p>\2. 提供服务：执行service方法，执行多次，servelt核心方法</p>
+<p>\3. 被销毁：执行destroy方法，只执行一次</p>
+<p>演示案例如下</p>
+<p><img src="/images/24.png" alt="image"></p>
+<p><strong>2.7**</strong>、<strong><strong>servlet</strong></strong>体系结构**</p>
+<p>Servlet有一个子类为GenericServlet，GenericServlet又有一个子类为HttpServlet，在创建servlet时，可以实现Servlet接口，也可以继承GenericServlet类。但在项目中创建Servlet的方式为，继承HttpServlet类。</p>
+<p><strong>创建的方式如下： new—-**</strong>》servlet**</p>
+<p><img src="/images/25.png" alt="image"></p>
+<p><strong>2.7**</strong>、理解<strong><strong>HTTP</strong></strong>协议及<strong><strong>HTTP</strong></strong>请求的结构（请求行，头，体）**</p>
+<p>我们已经掌握了如何创建Servlet,但Servlet的真正作用为处理用于的请求，以及对用户的请求做响应，那么我们就要知道会发送哪几种请求，要想理解请求，就要先知道Http协议与Http请求结构</p>
+<p><strong>HTTP**</strong>协议概念**</p>
+<p>Hyper Text Transfer Protocol 超文本传输协议，定义了，客户端和服务器端通信时，发送数据的格式</p>
+<p><strong>特点：</strong></p>
+<p>\1. 基于TCP/IP的高级协议</p>
+<p>\2. 默认端口号:80</p>
+<p>\3. 基于请求/响应模型的:一次请求对应一次响应</p>
+<p>\4. 无状态的：每次请求之间相互独立，不能交互数据</p>
+<p>历史版本：</p>
+<p>1.0：每一次请求响应都会建立新的连接</p>
+<p>1.1：复用连接</p>
+<p><strong>HTTP**</strong>协议的请求行，请求头，请求体**</p>
+<p><strong>1.</strong> <strong>请求行</strong></p>
+<p><strong>请求行包含的内容如下：</strong></p>
+<p>​           <strong>请求方式</strong>   <strong>请求url</strong>      <strong>请求协议/**</strong>版本**</p>
+<p>​                  <strong>GET     /login.html        HTTP/1.1</strong></p>
+<p>请求方式：</p>
+<p>​                  HTTP协议有7中请求方式，常用的有2种</p>
+<p>​                    GET：</p>
+<p>​                          1. 请求参数在请求行中，在url后。</p>
+<p>​                          2. 请求的url长度有限制的</p>
+<p>​                          3. 不太安全</p>
+<p>​                    POST：</p>
+<p>​                          1. 请求参数在请求体中</p>
+<p>​                          2. 请求的url长度没有限制的</p>
+<p>​                          3. 相对安全</p>
+<p><strong>2**</strong>、Http<strong>**协议请求头：</strong></p>
+<p>请求头的主要作用为：客户端浏览器告诉服务器一些信息</p>
+<p>1、浏览器告诉服务器，我访问你使用的浏览器版本信息</p>
+<p>2、告诉服务器，我(当前请求)从哪里来？</p>
+<p><strong>3**</strong>、Http<strong>**协议请求体：</strong></p>
+<p>封装POST请求消息的请求参数的，换句话说请求体里放的是要提交给服务器的内容，例如账户名、密码。</p>
+<p><strong>总结一下：</strong></p>
+<p>  通过以上的学习，就知道我们发送请求时，第一要确定请求方式，是post请求或get请求。第二要知道我们的所传递的内容是在请求中放的。</p>
+<p><strong>2.8**</strong>、熟练掌握使用<strong><strong>HttpServeltRequest</strong></strong>获取常用的头信息，请求参数，请求参数乱码处理，转发的特点**</p>
+<p>当用户发送请求时，服务器会创建两个对象，一个是HttpServeltRequest类的请求对象，一个HttpServletResponse类的响应对象。</p>
+<p><strong>1**</strong>、request<strong><strong>对象和response</strong></strong>对象的原理**</p>
+<p>​         1. request和response对象是由服务器创建的。我们来使用它们</p>
+<p>​         2. request对象是来获取请求消息，response对象是来设置响应消息</p>
+<p>首先学习request对象</p>
+<p><strong>2**</strong>、request<strong>**对象继承体系结构：</strong> </p>
+<p>​                  ServletRequest                 –      接口</p>
+<p>​                          |       继承</p>
+<p>​                  HttpServletRequest – 接口</p>
+<p>​                          |       实现</p>
+<p>​                  org.apache.catalina.connector.RequestFacade 类(tomcat)</p>
+<p><strong>3**</strong>、request<strong>**功能：</strong></p>
+<p><strong>1**</strong>、获取请求消息数据**</p>
+<p>​                   <strong>1.</strong> <strong>获取请求行数据</strong></p>
+<p>​                    GET  /day14/demo1?name=zhangsan  HTTP/1.1</p>
+<p>​                     方法：</p>
+<p>​                          1. 获取请求方式 ：GET</p>
+<p>​                                   String getMethod()  </p>
+<p>​                          2. 获取虚拟目录：/day14</p>
+<p>​                                   String getContextPath()</p>
+<p>​                          3. 获取Servlet路径: /demo1</p>
+<p>​                              String getServletPath()</p>
+<p>​                          4. 获取get方式请求参数：name=zhangsan</p>
+<p>​                                   String getQueryString()</p>
+<p>​                          5. 获取请求URI：/day14/demo1</p>
+<p>​                                   String getRequestURI():           /day14/demo1</p>
+<p>​                                   StringBuffer getRequestURL()  :<a href="http://localhost/day14/demo1" target="_blank" rel="noopener">http://localhost/day14/demo1</a></p>
+<p>URL：统一资源定位符 ： <a href="http://localhost/day14/demo1" target="_blank" rel="noopener">http://localhost/day14/demo1</a></p>
+<p>​                          URI：统一资源标识符 : /day14/demo1                                                  </p>
+<p>​                      6. 获取协议及版本：HTTP/1.1</p>
+<p>​                                   String getProtocol()</p>
+<p>\7. 获取客户机的IP地址：</p>
+<p>​                                  String getRemoteAddr()</p>
+<p><strong>2.**</strong>获取请求头数据**</p>
+<p>​                    方法：</p>
+<p>​                          String getHeader(String name):通过请求头的名称获取请求头的值</p>
+<p>​                          Enumeration<String> getHeaderNames():获取所有的请求头名称</p>
+<p>​        <strong>3.**</strong>获取请求体数据:**</p>
+<p>​                    请求体：只有POST请求方式，才有请求体</p>
+<p>​                     步骤：</p>
+<p>​                           1. 获取流对象</p>
+<p>​                                   BufferedReader getReader()：获取字符输入流，只能操作字符数据</p>
+<p>​                                   ServletInputStream getInputStream()：获取字节输入流</p>
+<p>​                                                                    在文件上传知识点后讲解</p>
+<p>\2. 再从流对象中拿数据</p>
+<p><strong>2**</strong>、其它功能（重要）**</p>
+<p><strong>1**</strong>、获取请求参数通用方式：不论get还是post请求方式都可以使用下列方法来获取请求参数**</p>
+<p>​    1.String getParameter(String name):根据参数名称获取参数值</p>
+<p>​    2. String[] getParameterValues(String name):根据参数名称获取参数值的数  组</p>
+<p>​    3. Enumeration<String> getParameterNames():获取所有请求的参数名称</p>
+<p>​    4. Map&lt;String,String[]&gt; getParameterMap():获取所有参数的map集合</p>
+<p><strong>中文乱码问题：</strong></p>
+<p>​        get方式：tomcat 8 已经将get方式乱码问题解决了</p>
+<p>​        post方式：会乱码</p>
+<p>​    解决：在获取参数前，设置request的编码request.setCharacterEncoding(“utf-8”);</p>
+<p><strong>2**</strong>、请求转发：一种在服务器内部的资源跳转方式**</p>
+<p>​    <strong>1**</strong>、步骤：**</p>
+<p>1.通过request对象获取请求转发器对象：</p>
+<p>RequestDispatcher getRequestDispatcher(String path)</p>
+<p>2.使用RequestDispatcher对象来进行转发：</p>
+<p>forward(ServletRequest request, ServletResponse response) </p>
+<p>​    <strong>2**</strong>、特点：**</p>
+<p>​          1. 浏览器地址栏路径不发生变化</p>
+<p>​          2. 只能转发到当前服务器内部资源中。</p>
+<p>​          3. 转发是一次请求</p>
+<p><strong>3**</strong>、共享数据：**</p>
+<p>​        域对象：一个有作用范围的对象，可以在范围内共享数据</p>
+<p>​        request域：代表一次请求的范围，一般用于请求转发的多个资源中共享数据</p>
+<p>​          方法：</p>
+<p>​             1. void setAttribute(String name,Object obj):存储数据</p>
+<p>​             2. Object getAttitude(String name):通过键获取值</p>
+<p>​             3. void removeAttribute(String name):通过键移除键值对</p>
+<p>\4. 获取ServletContext：</p>
+<p>​            ServletContext getServletContext()</p>
+<p><strong>讲解案例：</strong></p>
+<p>2.9、<strong>熟练掌握登陆案例</strong></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="/music/dshh.flac">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

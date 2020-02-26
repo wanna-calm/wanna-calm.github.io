@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html lang="中文" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>动态网站开发第三次课讲义 - 虚掷的青春</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="动态网站开发第三次课讲义**
+一、学习目标
+1、掌握http协议之响应部分
+2、熟练掌握Response的相关 API （重定向，路径，输出流）
+3、掌握ServletContext的常用API
+4,"> 
+    <meta name="author" content="刘亚平"> 
+    <link rel="alternative" href="atom.xml" title="虚掷的青春" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">虚掷的青春</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">动态网站开发第三次课讲义</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">动态网站开发第三次课讲义</h1>
+        <div class="stuff">
+            <span>二月 26, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>动态网站开发第三次课讲义**</p>
+<p><strong>一、学习目标</strong></p>
+<p>1、掌握http协议之响应部分</p>
+<p>2、熟练掌握Response的相关 API （重定向，路径，输出流）</p>
+<p>3、掌握ServletContext的常用API</p>
+<p>4、完成文件下载案例</p>
+<p><strong>二、具体讲解</strong></p>
+<p>   <strong>2.1**</strong>、掌握<strong><strong>http</strong></strong>协议之响应部分**</p>
+<ol>
+<li>请求消息：客户端发送给服务器端的数据</li>
+</ol>
+<p>​            数据格式：</p>
+<p>​                          1. 请求行</p>
+<p>​                          2. 请求头</p>
+<p>​                          3. 请求空行</p>
+<p>​                          4. 请求体</p>
+<p>​         2. 响应消息：服务器端发送给客户端的数据</p>
+<p>​                  数据格式：</p>
+<p>​                           <strong>1.</strong> <strong>响应行</strong></p>
+<p>​                                   1. 组成：协议/版本 响应状态码 状态码描述</p>
+<p>​                                   2. 响应状态码：服务器告诉客户端浏览器本次请求和响应的一个状态。</p>
+<p>​                                            1. 状态码都是3位数字 </p>
+<p>​                                            2. 分类：</p>
+<p>\1. 1xx：服务器就收客户端消息，但没有接受完成，等待一段时       间后，发送1xx多状态码</p>
+<p>​                                                     2. 2xx：成功。代表：200</p>
+<p>​                                                     3. 3xx：重定向。代表：302(重定向)，304(访问缓存)</p>
+<p>​                                                     4. 4xx：客户端错误。</p>
+<p>​                                                             代表：</p>
+<p>​                                                                      404（请求路径没有对应的资源） </p>
+<p>​                                                                      405：请求方式没有对应的doXxx方法</p>
+<p>​                                                     5. 5xx：服务器端错误。代表：500(服务器内部出现异常)               </p>
+<p>​                          <strong>2.</strong> <strong>响应头：</strong></p>
+<p>​                                   1. 格式：头名称： 值</p>
+<p>​                                   2. 常见的响应头：</p>
+<p>​                                    1. Content-Type：服务器告诉客户端本次响应体数据格式以及编码格式</p>
+<p>​                                    2. Content-disposition：服务器告诉客户端以什么格式打开响应体数据</p>
+<p>​                 MIME类型</p>
+<p>​                                            值：</p>
+<p>​                                                     in-line:默认值,在当前页面内打开</p>
+<p>​                                                attachment;filename=xxx：以附件形式打开响应体。文件下载</p>
+<p>​                          <strong>3.</strong> <strong>响应空行</strong></p>
+<p>​                          <strong>4.</strong> <strong>响应体:**</strong>传输的数据**</p>
+<p>​                  响应字符串格式</p>
+<p>​                          HTTP/1.1 200 OK</p>
+<p>​                          Content-Type: text/html;charset=UTF-8</p>
+<p>​                          Content-Length: 101</p>
+<p>​                          Date: Wed, 06 Jun 2018 07:08:42 GMT</p>
+<p>​                          <html></p>
+<p>​                            <head></p>
+<p>​                              <title>$Title$</title></p>
+<p>​                            <meta name="generator" content="Hexo 4.2.0"></head></p>
+<p>​                            <body></p>
+<p>​                            hello , response</p>
+<p>​                            </body></p>
+<p>​                          </html></p>
+<p><strong>2.2**</strong>、熟练掌握<strong><strong>Response</strong></strong>的相关** <strong>API</strong> <strong>（重定向，路径，输出流）</strong></p>
+<p>​    <strong>Response**</strong>对象**</p>
+<p>​            功能：设置响应消息</p>
+<p>​                  1. 设置响应行</p>
+<p>​                          1. 格式：HTTP/1.1 200 ok</p>
+<p>​                          2. 设置状态码：setStatus(int sc) </p>
+<p>​                  2. 设置响应头：setHeader(String name, String value)       </p>
+<p>​                  3. 设置响应体：</p>
+<p>​                          使用步骤：</p>
+<p>​                                   1. 获取输出流</p>
+<p>​                                            字符输出流：PrintWriter getWriter()</p>
+<p>​                                            字节输出流：ServletOutputStream getOutputStream()</p>
+<p>​                                   2. 使用输出流，将数据输出到客户端浏览器</p>
+<p>​         <strong>案例：</strong></p>
+<p>​                  1. 完成重定向</p>
+<p>​                          重定向：资源跳转的方式，重定向为向另外一个servlet</p>
+<p>​                    或另外一个jsp发送一个新的请求</p>
+<p>​                          代码实现：</p>
+<p>​                            1. 设置状态码为302</p>
+<p>​                          response.setStatus(302);</p>
+<p>​                        2.设置响应头location</p>
+<p>​                          response.setHeader(“location”,”/day15/responseDemo2”);</p>
+<p>​                          //简单的重定向方法</p>
+<p>​                          response.sendRedirect(“/day15/responseDemo2”);</p>
+<p>​                           重定向的特点:redirect</p>
+<p>​                                   1. 地址栏发生变化</p>
+<p>​                                   2. 重定向可以访问其他站点(服务器)的资源</p>
+<p>​                                   3. 重定向是两次请求。不能使用request对象来共享数据</p>
+<p>​                           转发的特点：forward</p>
+<p>​                                   1. 转发地址栏路径不变</p>
+<p>​                                   2. 转发只能访问当前服务器下的资源</p>
+<p>​                                   3. 转发是一次请求，可以使用request对象来共享数据</p>
+<p>​                           forward 和  redirect 区别</p>
+<p>​                            路径写法：</p>
+<p>​                                   1. 路径分类</p>
+<p>​                                            1. 相对路径：通过相对路径不可以确定唯一资源</p>
+<p>​                                                     如：./index.html</p>
+<p>​                                                       不以/开头，以.开头路径</p>
+<p>​                                                       规则：找到当前资源和目标资源之间的相对位置关系</p>
+<p>​                                                             ./：当前目录</p>
+<p>​                                                         ../:后退一级目录</p>
+<p>​                                            2. 绝对路径：通过绝对路径可以确定唯一资源</p>
+<p>​                                                         如：<a href="http://localhost/day15/responseDemo2" target="_blank" rel="noopener">http://localhost/day15/responseDemo2</a>                /day15/responseDemo2     以/开头的路径</p>
+<p><strong>规则：判断定义的路径是给谁用的？判断请求将来从哪儿发出</strong></p>
+<p>​                                                      给客户端浏览器使用：需要加虚拟目录(项目的访问路径)</p>
+<p>​                                                                      建议虚拟目录动态获取：request.getContextPath()</p>
+<p>​                                                                      <a> , <form> 重定向…</p>
+<p>​                                                      给服务器使用：不需要加虚拟目录</p>
+<p>​                                                                      转发路径</p>
+<p>​                  2. 服务器输出字符数据到浏览器</p>
+<p>​                           步骤：</p>
+<p>​                                   1. 获取字符输出流</p>
+<p>​                                   2. 输出数据</p>
+<p>​                           注意：</p>
+<p>​                                   乱码问题：</p>
+<p>​                        1. PrintWriter pw = response.getWriter();获取的流的默认编码是ISO-8859-1</p>
+<p>​                            2. 设置该流的默认编码</p>
+<p>​                            //简单的形式，设置编码，是在获取流之前设置</p>
+<p>​                      response.setContentType(“text/html;charset=utf-8”);</p>
+<p>​                  3. 服务器输出字节数据到浏览器</p>
+<p>​                          步骤：</p>
+<p>​                                   1. 获取字节输出流</p>
+<p>​                                   2. 输出数据</p>
+<p>​                  4. 验证码</p>
+<p>​                          1. 本质：图片</p>
+<p>​                           2. 目的：防止恶意表单注册</p>
+<p>​           <img src="/images/26.png" alt="image"></p>
+<p><strong>2.3**</strong>、掌握<strong><strong>ServletContext</strong></strong>的常用<strong>**API</strong></p>
+<p><strong>Servlet**</strong>有四大域对象，<strong>**pageContext request session application</strong></p>
+<p><strong>request       HttpServletRequest</strong></p>
+<p><strong>session       HttpSession</strong></p>
+<p><strong>application    ServletContext</strong></p>
+<p>\1. 概念：代表整个web应用，可以和程序的容器(服务器)来通信</p>
+<p>​         2. 获取：</p>
+<p>​                  1. 通过request对象获取</p>
+<p>​                          request.getServletContext();</p>
+<p>​                  2. 通过HttpServlet获取</p>
+<p>​                          this.getServletContext();</p>
+<p>​         3. 功能：</p>
+<p>​                  1. 获取MIME类型：</p>
+<p>​                          * MIME类型:在互联网通信过程中定义的一种文件数据类型</p>
+<p>​                                   * 格式： 大类型/小类型   text/html                image/jpeg</p>
+<p>​                          * 获取：String getMimeType(String file)  </p>
+<p>​                  2. 域对象：共享数据</p>
+<p>​                          1. setAttribute(String name,Object value)</p>
+<p>​                          2. getAttribute(String name)</p>
+<p>​                          3. removeAttribute(String name)</p>
+<p>​                          * ServletContext对象范围：所有用户所有请求的数据</p>
+<p>​                  3. 获取文件的真实(服务器)路径</p>
+<p>​                          1. 方法：String getRealPath(String path)  </p>
+<p>​                            String b = context.getRealPath(“/b.txt”);//web目录下资源访问</p>
+<p>​                        System.out.println(b);</p>
+<p>​                        String c = context.getRealPath(“/WEB-INF/c.txt”);//WEB-INF目录下的资源访问</p>
+<p>​                        System.out.println(c);</p>
+<p>​                      String a = context.getRealPath(“/WEB-INF/classes/a.txt”);//src目录下的资源访问</p>
+<p>​                        System.out.println(a);</p>
+<p><strong>2.4**</strong>、完成文件下载案例**</p>
+<p>​           文件下载需求：</p>
+<p>​                  1. 页面显示超链接</p>
+<p>​                  2. 点击超链接后弹出下载提示框</p>
+<p>​                  3. 完成图片文件下载</p>
+<p>​           分析：</p>
+<p>​                  1. 超链接指向的资源如果能够被浏览器解析，则在浏览器中展示，如果不能解析，则弹出下载提示框。不满足需求</p>
+<p>​                  2. 任何资源都必须弹出下载提示框</p>
+<p>​                  3. 使用响应头设置资源的打开方式：</p>
+<p>​                   content-disposition:attachment;filename=xxx</p>
+<p>​           步骤：</p>
+<p>​                  1. 定义页面，编辑超链接href属性，指向Servlet，传递资源名称filename</p>
+<p>​                  2. 定义Servlet</p>
+<p>​                          1. 获取文件名称</p>
+<p>​                          2. 使用字节输入流加载文件进内存</p>
+<p>​                          3. 指定response的响应头： content-disposition:attachment;filename=xxx</p>
+<p>​                          4. 将数据写出到response输出流</p>
+<p>​           问题：</p>
+<p>​                    中文文件问题</p>
+<p>​                           解决思路：</p>
+<p>​                                   1. 获取客户端使用的浏览器版本信息</p>
+<p>​                                   2. 根据不同的版本信息，设置filename的编码方式不同</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="/music/dshh.flac">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

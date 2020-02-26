@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<html lang="中文" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>动态网站开发第五次课讲义 - 虚掷的青春</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="动态网站开发第五次课讲义
+一、学习目标
+\1. JSP进一步讲解:
+​         1. 指令
+​         2. 注释
+​         3. 内置对象
+\2. MVC开发模式
+\3.,"> 
+    <meta name="author" content="刘亚平"> 
+    <link rel="alternative" href="atom.xml" title="虚掷的青春" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">虚掷的青春</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">动态网站开发第五次课讲义</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">动态网站开发第五次课讲义</h1>
+        <div class="stuff">
+            <span>二月 26, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>动态网站开发第五次课讲义</p>
+<p><strong>一、学习目标</strong></p>
+<p>\1. JSP进一步讲解:</p>
+<p>​         1. 指令</p>
+<p>​         2. 注释</p>
+<p>​         3. 内置对象</p>
+<p>\2. MVC开发模式</p>
+<p>\3. EL表达式</p>
+<p>\4. JSTL标签</p>
+<p>\5. 三层架构</p>
+<p><strong>二、具体讲解</strong></p>
+<p><strong>2.1**</strong>、<strong><strong>JSP</strong></strong>进一步讲解**</p>
+<p> <strong>1.</strong> <strong>指令</strong></p>
+<p>​                  作用：用于配置JSP页面，导入资源文件</p>
+<p>​                  格式：</p>
+<p>​                          &lt;%@ 指令名称 属性名1=属性值1 属性名2=属性值2 … %&gt;</p>
+<p>​                  分类：</p>
+<p>​                          1. page： 配置JSP页面的</p>
+<p>​                                   contentType：等同于response.setContentType()</p>
+<p>​                                            1. 设置响应体的mime类型以及字符集</p>
+<p>​                                            2. 设置当前jsp页面的编码（只能是高级的IDE才能生效，如果使</p>
+<p>用低级工具，则需要设置pageEncoding属性设置当前页面的字符集）</p>
+<p>​                                   import：导包 &lt;%@ page &gt;</p>
+<p>​                                   errorPage：当前页面发生异常后，会自动跳转到指定的错误页面</p>
+<p>​                                   isErrorPage：标识当前也是是否是错误页面。</p>
+<p>​                                            true：是，可以使用内置对象exception</p>
+<p>​                                            false：否。默认值。不可以使用内置对象exception</p>
+<p>​                          2. include ： 页面包含的。导入页面的资源文件</p>
+<p>​                                   &lt;%@include file=”top.jsp”%&gt;</p>
+<p>​                          3. taglib   ： 导入资源</p>
+<p>​                                   &lt;%@ taglib prefix=”c” uri=”<a href="http://java.sun.com/jsp/jstl/core&quot;" target="_blank" rel="noopener">http://java.sun.com/jsp/jstl/core&quot;</a> %&gt;</p>
+<p>​                                    prefix：前缀，自定义的</p>
+<p><strong>2.</strong> <strong>注释:</strong></p>
+<p>​         1. html注释：</p>
+<p>​                  <!-- -->:只能注释html代码片段</p>
+<p>​         2. jsp注释：推荐使用</p>
+<p>​                  &lt;%– –%&gt;：可以注释所有</p>
+<p><strong>3.</strong> <strong>内置对象</strong></p>
+<p>​         在jsp页面中不需要创建，直接使用的对象</p>
+<p>​         一共有9个：</p>
+<p>​                  变量名                                       真实类型                                   作用</p>
+<p>​                  pageContext                              PageContext                     当前页面共享数据，还  </p>
+<p>​                        可以获取其他八个内置对象</p>
+<p>​                  </p>
+<p>request                          HttpServletRequest          一次请求访问的多个资源(转发)</p>
+<p>​                    session                                   HttpSession                        一次会话的多个请求间</p>
+<p>​                    application                             ServletContext                   所有用户间共享数据</p>
+<p>​                    response                                HttpServletResponse       响应对象</p>
+<p>​                     page                                       Object                        当前页面(Servlet)的对象this</p>
+<p>​                      out                                       JspWriter                          输出对象，数据输出到页面上</p>
+<p>​                     config                                    ServletConfig                             Servlet的配置对象</p>
+<p>​                   exception                                  Throwable                               异常对象</p>
+<p><strong>2.2**</strong>、** <strong>MVC**</strong>：开发模式**  </p>
+<ol>
+<li>jsp演变历史</li>
+</ol>
+<p>​                  1. 早期只有servlet，只能使用response输出标签数据，非常麻烦</p>
+<p>​                  2. 后来又jsp，简化了Servlet的开发，如果过度使用jsp，在jsp中即写大量的</p>
+<p>java代码，有写html表，造成难于维护，难于分工协作</p>
+<p>​                  3. 再后来，java的web开发，借鉴mvc开发模式，使得程序的设计更加合理性</p>
+<p>\2. MVC：</p>
+<p>​                  1. M：Model，模型。JavaBean</p>
+<p>​                           完成具体的业务操作，如：查询数据库，封装对象</p>
+<p>​                  2. V：View，视图。JSP</p>
+<p>​                          展示数据</p>
+<p>​                  3. C：Controller，控制器。Servlet</p>
+<p>​                          获取用户的输入</p>
+<p>​                          调用模型</p>
+<p>​                          将数据交给视图进行展示</p>
+<p>​                  优缺点：</p>
+<p>​                          1. 优点：</p>
+<p>​                                   1. 耦合性低，方便维护，可以利于分工协作</p>
+<p>​                                   2. 重用性高</p>
+<p>​                          2. 缺点：</p>
+<p>​                                   1. 使得项目架构变得复杂，对开发人员要求高</p>
+<p><strong>2.3**</strong>、<strong><strong>EL</strong></strong>表达式**</p>
+<p>  <strong>1.</strong> <strong>概念</strong>：Expression Language 表达式语言</p>
+<p><strong>2.</strong> <strong>作用：</strong>替换和简化jsp页面中java代码的编写</p>
+<p><strong>3.</strong> <strong>语法：</strong>${表达式}</p>
+<p><strong>4.</strong> <strong>注意：</strong></p>
+<p>​          jsp默认支持el表达式的。如果要忽略el表达式</p>
+<p>​          1. 设置jsp中page指令中：isELIgnored=”true” 忽略当前jsp页面中所有的el表达式</p>
+<p>​          2. ${表达式} ：忽略当前这个el表达式</p>
+<p><strong>5.</strong> <strong>使用：</strong></p>
+<p>​                  1. 运算：</p>
+<p>​                          运算符：</p>
+<p>​                                   1. 算数运算符： + - * /(div) %(mod)</p>
+<p>​                                   2. 比较运算符： &gt; &lt; &gt;= &lt;= == !=</p>
+<p>​                                   3. 逻辑运算符： &amp;&amp;(and) ||(or) !(not)</p>
+<p>​                                   4. 空运算符： empty</p>
+<p>​                                    功能：用于判断字符串、集合、数组对象是否为null或者长度是否为0</p>
+<p>​                                       ${empty list}:判断字符串、集合、数组对象是否为null或者长度为0</p>
+<p>​                                            ${not empty str}:表示判断字符串、集合、数组对象是否不为null </p>
+<p>并且 长度&gt;0</p>
+<p>​                   2. 获取值</p>
+<p>​                          1. el表达式只能从域对象中获取值</p>
+<p>​                          2. 语法：</p>
+<p>​                                   1. ${域名称.键名}：从指定域中获取指定键的值</p>
+<p>​                                            域名称：</p>
+<p>​                                                     1. pageScope            –&gt; pageContext</p>
+<p>​                                                     2. requestScope      –&gt; request</p>
+<p>​                                                     3. sessionScope      –&gt; session</p>
+<p>​                                                     4. applicationScope –&gt; application（ServletContext）</p>
+<p>​                                            举例：在request域中存储了name=张三</p>
+<p>​                                            获取：${requestScope.name}</p>
+<p>\2. ${键名}：表示依次从最小的域中查找是否有该键对应的值，直到找</p>
+<p>到为止。</p>
+<p>​                                   3. 获取对象、List集合、Map集合的值</p>
+<p>​                                            1. 对象：${域名称.键名.属性名}</p>
+<p>​                                                     本质上会去调用对象的getter方法</p>
+<p>​                                            2. List集合：${域名称.键名[索引]}</p>
+<p>​                                            3. Map集合：</p>
+<p>​                                                     ${域名称.键名.key名称}</p>
+<p>​                                                     ${域名称.键名[“key名称”]}</p>
+<p>​                   3. 隐式对象：</p>
+<p>​                           el表达式中有11个隐式对象</p>
+<p>​                           pageContext：</p>
+<p>​                                    获取jsp其他八个内置对象</p>
+<p>​                                             ${pageContext.request.contextPath}：动态获取虚拟目录</p>
+<p><strong>2.4**</strong>、<strong><strong>JSTL</strong></strong>表达式**</p>
+<p>  <strong>1.</strong> <strong>概念</strong>：JavaServer Pages Tag Library  JSP标准标签库</p>
+<p>​                  是由Apache组织提供的开源的免费的jsp标签&lt;标签&gt;</p>
+<p><strong>2.</strong> <strong>作用：</strong>用于简化和替换jsp页面上的java代码                 </p>
+<p><strong>3.</strong> <strong>使用步骤：</strong></p>
+<p>​                  1. 导入jstl相关jar包</p>
+<p>​                  2. 引入标签库：taglib指令：  &lt;%@ taglib %&gt;</p>
+<p>​                  3. 使用标签</p>
+<p><strong>4.</strong> <strong>常用的JSTL**</strong>标签**</p>
+<p>​                  1. if:相当于java代码的if语句</p>
+<p>​                          1. 属性：</p>
+<p>​                    test 必须属性，接受boolean表达式</p>
+<p>​                        如果表达式为true，则显示if标签体内容，如果为false，则不显示</p>
+<p>标签体内容</p>
+<p>​                         一般情况下，test属性值会结合el表达式一起使用</p>
+<p>​                   2. 注意：</p>
+<p>​                            c:if标签没有else情况，想要else情况，则可以在定义一个c:if标签</p>
+<p>​                  2. choose:相当于java代码的switch语句</p>
+<p>​                          1. 使用choose标签声明                              相当于switch声明</p>
+<p>​            2. 使用when标签做判断                             相当于case</p>
+<p>​            3. 使用otherwise标签做其他情况的声明     相当于default</p>
+<p>​                  3. foreach:相当于java代码的for语句</p>
+<p><strong>5.</strong> <strong>练习：</strong></p>
+<p>​                  需求：在request域中有一个存有User对象的List集合。需要使用jstl+el将list</p>
+<p>集合数据展示到jsp页面的表格table中</p>
+<p><strong>2.5**</strong>、** <strong>案例：用户信息列表展示</strong></p>
+<p>​         1. 需求：用户信息的增删改查操作</p>
+<p>​         2. 设计：</p>
+<p>​                  1. 技术选型：Servlet+JSP+MySQL+JDBCTempleat+Duird+BeanUtilS+tomcat</p>
+<p>​                  2. 数据库设计：</p>
+<p>​                          create database day17; – 创建数据库</p>
+<p>​                          use day17;                           – 使用数据库</p>
+<p>​                          create table user(   – 创建表</p>
+<p>​                                   id int primary key auto_increment,</p>
+<p>​                                   name varchar(20) not null,</p>
+<p>​                                   gender varchar(5),</p>
+<p>​                                   age int,</p>
+<p>​                                   address varchar(32),</p>
+<p>​                                   qq    varchar(20),</p>
+<p>​                                   email varchar(50)</p>
+<p>​                          );</p>
+<p>​         3. 开发：</p>
+<p>​                  1. 环境搭建</p>
+<p>​                          1. 创建数据库环境</p>
+<p>​                          2. 创建项目，导入需要的jar包</p>
+<p>​                  2. 编码</p>
+<p>​         4. 测试</p>
+<p>​         5. 部署运维</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="/music/dshh.flac">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

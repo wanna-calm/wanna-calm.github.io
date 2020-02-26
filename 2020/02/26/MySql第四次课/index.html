@@ -5,12 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Tag: MySql - 虚掷的青春</title>
+    <title>MySql第四次课 - 虚掷的青春</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Fechin,"> 
-    
+    <meta name="description" content="/*Mysql第四次课 truncate清空表 truncate table 表名 is  null is not null 模糊查询    like    % 代表一个或多个字符    _ 代表一,"> 
     <meta name="author" content="刘亚平"> 
     <link rel="alternative" href="atom.xml" title="虚掷的青春" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -35,115 +35,66 @@
 <body class="loading">
     <span id="config-title" style="display:none">虚掷的青春</span>
     <div id="loader"></div>
-    <div class="nav">
-    <ul id="menu-menu" class="menu">
-        
-        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="/whoami/" title="Whoami" target="_blank" rel="noopener">Whoami</a>
-        </li>
-        
-        <li class="  menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="https://github.com/Fechin" title="Github" target="_blank" rel="noopener">Github</a>
-        </li>
-        
-        <li class="  menu-item menu-item-type-post_type menu-item-object-page">
-            <a href="https://twitter.com/FechinLi" title="Twitter" target="_blank" rel="noopener">Twitter</a>
-        </li>
-        
-    </ul>
-    <p id="copyright">
-        &copy; 2020 刘亚平.
-        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
-        Theme <a href="https://github.com/Fechin/hexo-theme-diaspora" title="Diaspora" target="_blank" rel="noopener">Diaspora</a>
-        by Fechin
-    </p>
-</div>
-
-<div id="container">
-    
-<div id="screen">
-    <div id="mark">
-        <div class="layer" data-depth="0.4">
-            <img src="/img/p5.jpg" id="cover" crossorigin="anonymous" width="1920" height="1080">
-        </div>
-    </div>
-    <div id="vibrant">
-        <svg viewBox="0 0 2880 1620" height="100%" preserveAspectRatio="xMaxYMax slice">
-            <polygon opacity="0.7" points="2000,1620 0,1620 0,0 600,0 "/>
-        </svg>
-        <div></div>
-    </div>
-    <div id="header">
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">MySql第四次课</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
         <div>
-            <a class="image-logo" href="/"></a>
-            <div class="icon-menu switchmenu"></div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
         </div>
     </div>
-    
-    <div id="post0">
-        <p>二月 26, 2020</p>
-        <h2><a href="/2020/02/26/MySql%E7%AC%AC%E4%BA%94%E6%AC%A1%E8%AF%BE/" title="MySql第五次课" class="posttitle">MySql第五次课</a></h2>
-        <p class="summary">/*Mysql第五次课   索引与事务   数据库优化      数据库优化指的就是通过各种途径      提高查...</p>
-    </div>
-    
+    <div class="scrollbar"></div>
 </div>
 
-    <div id="primary">
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">MySql第四次课</h1>
+        <div class="stuff">
+            <span>二月 26, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/MySql/" rel="tag">MySql</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>/*<br>Mysql第四次课<br> truncate清空表<br> truncate table 表名<br> is  null<br> is not null<br> 模糊查询<br>    like<br>    % 代表一个或多个字符<br>    _ 代表一个字符<br> exists存在<br>    exists里边括住的是一个<br>    查询语句,如果查询语句<br>    有结果，外部查询就正常<br>    执行，如果没结果，外部<br>    查询不执行<br> not exists不存在<br>*/<br>SELECT * FROM course<br>              WHERE cnam IS NOT NULL</p>
+<p>#模糊查询<br>#查询出姓名中包含“三”的<br>#学生的信息<br>SELECT * FROM StudentInfo<br>      WHERE snam LIKE ‘%三%’;<br>#查询出姓周的同学信息<br>SELECT * FROM StudentInfo<br>      WHERE snam LIKE ‘周%’<br>#如果有安阳市的学生，就把<br>#本班所有学生的信息查询<br>#出来<br>SELECT * FROM StudentInfo<br>           WHERE EXISTS(<br>SELECT * FROM StudentInfo<br>         WHERE address LIKE ‘%许昌%’<br>)</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="/music/dshh.flac">
+            </audio>
+            
+        </div>
         
-<div class="post">
-    <a href="/2020/02/26/MySql%E7%AC%AC%E5%9B%9B%E6%AC%A1%E8%AF%BE/" title="MySql第四次课">
-        <img src="/img/p4.jpg" class="cover" width="680" height="440">
-    </a>
-    <div class="else">
-        <p>二月 26, 2020</p>
-        <h3><a href="/2020/02/26/MySql%E7%AC%AC%E5%9B%9B%E6%AC%A1%E8%AF%BE/" title="MySql第四次课" class="posttitle">MySql第四次课</a></h3>
-        <p>/*Mysql第四次课 truncate清空表 truncate table 表名 is  null is not null 模糊查询    like  ...</p>
-    </div>
-</div>
-
-
-<div class="post">
-    <a href="/2020/02/26/MySql%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%AF%BE/" title="MySql第一次课">
-        <img src="/img/p1.jpg" class="cover" width="680" height="440">
-    </a>
-    <div class="else">
-        <p>二月 26, 2020</p>
-        <h3><a href="/2020/02/26/MySql%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%AF%BE/" title="MySql第一次课" class="posttitle">MySql第一次课</a></h3>
-        <p>/*Mysql数据库第一次课   0、数据库的分类       关系型数据库          sqlserver mysql orcale       ...</p>
-    </div>
-</div>
-
-
-<div class="post">
-    <a href="/2020/02/26/MySql%E7%AC%AC%E4%B8%89%E6%AC%A1%E8%AF%BE/" title="MySql第三次课">
-        <img src="/img/p3.jpg" class="cover" width="680" height="440">
-    </a>
-    <div class="else">
-        <p>二月 26, 2020</p>
-        <h3><a href="/2020/02/26/MySql%E7%AC%AC%E4%B8%89%E6%AC%A1%E8%AF%BE/" title="MySql第三次课" class="posttitle">MySql第三次课</a></h3>
-        <p>/*  Mysql第三次课     order by 排序         asc升序         desc 降序     group by 把表分组...</p>
-    </div>
-</div>
-
-
-<div class="post">
-    <a href="/2020/02/26/MySql%E7%AC%AC%E4%BA%8C%E6%AC%A1%E8%AF%BE/" title="MySql第二次课">
-        <img src="/img/p2.jpg" class="cover" width="680" height="440">
-    </a>
-    <div class="else">
-        <p>二月 26, 2020</p>
-        <h3><a href="/2020/02/26/MySql%E7%AC%AC%E4%BA%8C%E6%AC%A1%E8%AF%BE/" title="MySql第二次课" class="posttitle">MySql第二次课</a></h3>
-        <p>/*Mysql第二次课   数据库设计的三大范式   第一范式：      每个字段的数据都是不可分割      的最小的数据单元   第二范式     ...</p>
-    </div>
-</div>
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
 
 
     </div>
     
 </div>
-<div id="preview"></div>
 
 
+    </div>
+</div>
 </body>
 
 <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
