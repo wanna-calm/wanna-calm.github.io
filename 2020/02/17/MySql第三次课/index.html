@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="中文" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MySql第三次课 - 虚掷的青春</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="/*  Mysql第三次课     order by 排序         asc升序         desc 降序     group by 把表分组     group by…having..,"> 
+    <meta name="author" content="刘亚平"> 
+    <link rel="alternative" href="atom.xml" title="虚掷的青春" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">虚掷的青春</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">MySql第三次课</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">MySql第三次课</h1>
+        <div class="stuff">
+            <span>二月 17, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/MySql/" rel="tag">MySql</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>/*<br>  Mysql第三次课<br>     order by 排序<br>         asc升序<br>         desc 降序<br>     group by 把表分组<br>     group by…having..分组并筛选符合<br>                        条件的组<br>     子查询<br>        查询语句里边嵌套查询语句<br>     连接<br>        把多张表连接成一张表,要注意<br>        一般连接有主外键关系的表<br>        连接分类：<br>        普通连接</p>
+<pre><code>内连接
+  inner join .. on...
+  inner join用内连接方式连接
+            两张表
+  on  后边写的是条件
+外连接（左连接与右连接）
+    左连接
+      left join..on...
+      左边的表显示所有数据，
+      右边的表只显示匹配上的
+      数据
+    右连接
+      right join...on...
+      右边的表显示全部数据
+      左边的表只显示匹配上的
+全连接
+    左右边都全部显示   </code></pre><p><em>/<br>CREATE DATABASE schooldb;<br>USE Schooldb;<br>#教师表<br>CREATE TABLE teacher(<br>   tid INT PRIMARY KEY AUTO_INCREMENT,<br>   tnam VARCHAR(20) NOT NULL,<br>   hiredate DATE,#入职日期<br>   sex VARCHAR(5)<br>)<br>#班级信息表<br>CREATE TABLE ClassInfo(<br>   cid INT PRIMARY KEY AUTO_INCREMENT,<br>   cnam VARCHAR(20) NOT NULL,<br>   grid INT, #年级编号<br>   beginyear VARCHAR(20)<br>)<br>#学生信息表<br>CREATE TABLE StudentInfo(<br>   sid INT PRIMARY KEY AUTO_INCREMENT,<br>   snam VARCHAR(20) NOT NULL,<br>   sex VARCHAR(5),<br>   age INT,<br>   birthday DATE,<br>   cid INT, #班级编号<br>   beginyear VARCHAR(20),#入学日期<br>   stel VARCHAR(15),<br>   address VARCHAR(100),<br>   email VARCHAR(50)<br>)<br>#课程表<br>CREATE TABLE course(<br>   coid INT PRIMARY KEY AUTO_INCREMENT,<br>   cnam VARCHAR(50) NOT NULL,#课程名<br>   tid INT    #讲授老师编号<br>)<br>#成绩表<br>CREATE TABLE score(<br>   scid INT PRIMARY KEY AUTO_INCREMENT,<br>   sid INT ,#学生学号<br>   coid INT, #课程编号<br>   score INT,<br>   remark VARCHAR(100) #备注<br>)<br>#年级表<br>CREATE TABLE grade(<br>  gid INT PRIMARY KEY AUTO_INCREMENT,<br>  gnam VARCHAR(50), #年级名<br>  major VARCHAR(100) #专业<br>)<br>#一次性插入多条语句<br>INSERT INTO teacher(tnam,hiredate,sex)<br>VALUES(‘张三’,’2017-09-01’,’男’),<br>(‘李四’,’2018-07-02’,’男’),<br>(‘王五’,’2016-08-16’,’男’);<br>INSERT INTO grade(gnam,major)<br>VALUES(‘18级’,’软信’),(‘19级’,’软信’)<br>,(‘18级’,’移动’),(‘19级’,’移动’);<br>INSERT INTO StudentInfo(snam,sex,age<br>,birthday,cid,beginyear,stel,address<br>,email) VALUES(‘崔一’,’男’,18,’2001-07-05’<br>,1,’2018’,’18867890987’,<br>‘河南省许昌市’,‘159078923@qq.com’),<br>(‘丁二’,’男’,19,’2000-08-05’<br>,2,’2018’,’18967890987’,<br>‘河南省许昌市’,‘156078923@qq.com’),<br>(‘丁三’,’男’,20,’1999-09-05’<br>,3,’2018’,’18877890987’,<br>‘河南省郑州市’,‘157078923@qq.com’),<br>(‘周三’,’女’,17,’2002-06-05’<br>,4,’2019’,’18177890987’,<br>‘河南省洛阳市’,‘157278923@qq.com’);<br>INSERT INTO StudentInfo(snam,sex,age<br>,birthday,cid,beginyear,stel,address<br>,email) VALUES(‘周四’,’女’,18,’2002-06-05’<br>,4,’2019’,’18177800087’,<br>‘河南省洛阳市’,‘157279923@qq.com’)<br>INSERT INTO ClassInfo(cnam,grid,<br>beginyear) VALUES(‘软信1’,1,’2018’)<br>,(‘移动1’,2,’2018’),(‘软信1’,3,’2019’),<br>(‘移动1’,4,’2019’);<br>INSERT INTO course(cnam,tid)<br>VALUES(‘计算机基础’,1),(‘前端基础’,2)<br>,(‘java基础’,3),(‘js基础’,3);<br>INSERT INTO score(sid,coid,score,remark)<br>VALUES(1,1,90,’无’),(1,2,75,’无’),<br>(1,3,59,’无’),(1,4,76,’无’)<br>,(2,1,93,’无’),(2,2,77,’无’),<br>(2,3,66,’无’),(2,4,78,’无’),<br>(3,1,87,’无’),(3,2,55,’无’),<br>(3,3,76,’无’),<br>(4,1,88,’无’),(4,2,66,’无’),<br>(4,3,90,’无’),(4,4,76,’无’);<br>#order by排序<br>#把StudentInfo表按年纪从小到大排序<br>SELECT * FROM StudentInfo ORDER BY<br>    age ASC;<br>#把StudentInfo表按年纪从大到小排序<br>SELECT * FROM StudentInfo ORDER BY<br>    age DESC;<br>#group by分组<br>#把某张表按照某个字段进行分组<br>#查询出每个学生的平均成绩，结果要<br>#显示的字段为，学生学号 平均成绩<br>SELECT sid,AVG(score) ‘平均成绩’<br>FROM score GROUP BY sid;<br>#group by … havig..筛选出来符合条件<br>#的组<br>#查询出全部及格学生的平均成绩<br>SELECT sid,AVG(score) ‘avg’ FROM score<br>GROUP BY sid HAVING MIN(score)&gt;60;<br>#查询出考试门数不够四门的学生学号<br>SELECT sid FROM score GROUP BY sid<br>    HAVING COUNT(</em>)&lt;4;<br>#查询出“计算机基础”的成绩<br>SELECT coid,score FROM score WHERE<br>coid=(<br>SELECT coid FROM course<br>             WHERE cnam=’计算机基础’);<br>#查询出每门课的平均成绩<br>SELECT coid,AVG(score)’平均成绩’ FROM<br>               score GROUP BY coid;<br>#查询出‘周三’学生的平均成绩<br>SELECT AVG(score) ‘平均成绩’ FROM<br>               score WHERE sid=(<br>SELECT sid FROM StudentInfo<br>               WHERE snam=’周三’);<br>#连接<br>#普通连接<br>SELECT * FROM StudentInfo s,score c<br>                      WHERE<br>                      s.sid=c.sid;<br>#查询出每个人的平均成绩，要显示的<br>#字段为，姓名 平均成绩<br>SELECT snam,AVG(score) FROM<br>             StudentInfo s,score c<br>             WHERE<br>             s.sid=c.sid<br>             GROUP BY s.sid;<br>#内连接<br>SELECT * FROM StudentInfo s<br>              INNER JOIN<br>              score c<br>              ON<br>              s.sid=c.sid;<br>SELECT snam,AVG(score) FROM<br>             StudentInfo s<br>             INNER JOIN<br>             score c<br>             ON<br>             s.sid=c.sid<br>             GROUP BY s.sid;</p>
+<p>#左连接<br>SELECT * FROM StudentInfo s<br>              LEFT JOIN<br>              score c<br>              ON<br>              s.sid=c.sid;<br>#查询出有不及格成绩的学生信息，<br>#缺考算不及格<br>SELECT * FROM StudentInfo WHERE sid<br>IN(<br>SELECT sid FROM score<br>          GROUP BY sid<br>          HAVING MIN(score)&lt;60<br>UNION<br>SELECT sid FROM score<br>             GROUP BY sid<br>             HAVING<br>             COUNT(<em>)&lt;<br>             (SELECT COUNT(</em>) FROM<br>               course));</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="/music/dshh.flac">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

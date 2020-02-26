@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="中文" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2.12课件-加密，编码格式，session,cookie,webStorage,转发和重定向 - 虚掷的青春</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="1，加密介绍MD5：只能加密，不能解密，一般用于对密码进行加密，加密完成后获得一个32位字符串。
+UUID：在任何时间任何地点获取到的UUID是唯一的，很难重复，一般用作表格的主键等，共32位。
+2,"> 
+    <meta name="author" content="刘亚平"> 
+    <link rel="alternative" href="atom.xml" title="虚掷的青春" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">虚掷的青春</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">2.12课件-加密，编码格式，session,cookie,webStorage,转发和重定向</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">2.12课件-加密，编码格式，session,cookie,webStorage,转发和重定向</h1>
+        <div class="stuff">
+            <span>二月 17, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/JavaWeb-%E5%9F%BA%E7%A1%80/" rel="tag">JavaWeb 基础</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h2 id="1，加密介绍"><a href="#1，加密介绍" class="headerlink" title="1，加密介绍"></a>1，加密介绍</h2><p>MD5：只能加密，不能解密，一般用于对密码进行加密，加密完成后获得一个32位字符串。</p>
+<p>UUID：在任何时间任何地点获取到的UUID是唯一的，很难重复，一般用作表格的主键等，共32位。</p>
+<h2 id="2，设置编码格式"><a href="#2，设置编码格式" class="headerlink" title="2，设置编码格式"></a>2，设置编码格式</h2><p>request：</p>
+<p>​    get：Tomcat8以下版本需要在server.xml中设置URIEncoding=”UTF-8”;</p>
+<p>​    post：request.setCharacterEncoding(“UTF-8”);</p>
+<p>response：</p>
+<p>​    通过contentType进行设置</p>
+<h2 id="3，session"><a href="#3，session" class="headerlink" title="3，session"></a>3，session</h2><p>​    如何获取session</p>
+<p>​        HttpSession session = request.getSession();</p>
+<p>​    参数和属性的区别</p>
+<p>​        Attribute/Parameter</p>
+<p>​    作用：</p>
+<p>​    1，权限验证（判断是否已经登陆）</p>
+<p>​    2，保存一些临时信息（比如购物车）</p>
+<p>​    生命周期：</p>
+<p>​    创建：Request.getSession();</p>
+<p>​    销毁：手动销毁/最大存在时间</p>
+<p>​    用户和服务端的session通过sessionID进行校对    </p>
+<h2 id="4，cookie和webStorage"><a href="#4，cookie和webStorage" class="headerlink" title="4，cookie和webStorage"></a>4，cookie和webStorage</h2><p>当你浏览网页时，服务器会先在浏览器中保存的一小段文本信息，当你再次浏览这个网站时，确认为你的账号后，cookie会帮你推荐出特定的内容。cookie可以保存登陆，购物车等需要记录的信息；保存用户的偏好，比如网页的字体大小、背景色等等；记录和分析用户行为。cookie的使用可以让我们觉得那些网站或app更亲切，更人性化，如同“小甜点”一般。然而cookie并不适合客户端存储，它的容量很小（4KB），缺乏数据操作接口，而且会影响性能。与之相比，Storage有大很多的存储空间，并且可以节约带宽。<br>常见属性和方法：</p>
+<p>1.storage.setItem()用于存入数据，主要接收键名key和键值value两个参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.sessionStorage.setItem(<span class="string">'key'</span>, <span class="string">'value'</span>); </span><br><span class="line"><span class="built_in">window</span>.localStorage.setItem(<span class="string">'key'</span>, <span class="string">'value'</span>);</span><br></pre></td></tr></table></figure>
+
+
+<p>2.storage.getItem()用于读取数据，接收键名一个参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.sessionStorage.getItem(<span class="string">'key'</span>)</span><br><span class="line"><span class="built_in">window</span>.localStorage.getItem(<span class="string">'key'</span>)</span><br></pre></td></tr></table></figure>
+
+
+<p>3.storage.removeItem()用于清除某个键名对应的键值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.removeItem(<span class="string">'key'</span>);</span><br><span class="line">localStorage.removeItem(<span class="string">'key'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>4.storage.clear()用于清除所有保存的数据</p>
+<p>5.storage只有storage.length一个属性，用于返回保存的数据项个数，有时也会用到。</p>
+<p>由上面可知，local Storage和session Storage用法基本一致，二者不同点在于数据存储时限不同，local Storage可永久保存，session Stoage则在session（对话）结束后就会删除。</p>
+<h2 id="5，转发和重定向"><a href="#5，转发和重定向" class="headerlink" title="5，转发和重定向"></a>5，转发和重定向</h2><p>​        转发：request.getRequestDispatcher(“/url”).forward(request, response);</p>
+<p>​        重定向：response.sendRedirect(“/url”);</p>
+<p>​    <strong>区别：</strong></p>
+<p>​        转发在服务器端完成的；重定向是在客户端完成的<br>​        转发的速度快；重定向速度慢<br>​        转发的是同一次请求；重定向是两次不同请求<br>​        转发不会执行转发后的代码；重定向会执行重定向之后的代码<br>​        转发地址栏没有变化；重定向地址栏有变化<br>​        转发必须是在同一台服务器下完成；重定向可以在不同的服务器下完成</p>
+<p>​        <strong><u>特别注意不要重复提交订单</u></strong></p>
+<p>jsp的执行步骤</p>
+<p>编写了一个jsp文件–&gt;启动Tomcat容器–&gt;请求jsp资源–&gt;当前jsp文件被翻译为servlet.java文件–&gt;servlet文件被编译为.class文件–&gt;放入到容器中–&gt;执行servlet文件</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="/music/dshh.flac">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

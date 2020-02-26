@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="中文" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>动态网站开发第一次课讲义 - 虚掷的青春</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="动态网站开发第一次课讲义
+一、学习目标
+
+理解WEB相关概念和WEB服务器概述
+
+会安装、卸载、启动和关闭tomcat
+
+掌握为eclipse配置tomcat
+
+能够创建动态WEB项目
+
+掌握使用t,"> 
+    <meta name="author" content="刘亚平"> 
+    <link rel="alternative" href="atom.xml" title="虚掷的青春" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">虚掷的青春</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">动态网站开发第一次课讲义</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">动态网站开发第一次课讲义</h1>
+        <div class="stuff">
+            <span>二月 17, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>动态网站开发第一次课讲义</p>
+<p><strong>一、学习目标</strong></p>
+<ol>
+<li><p>理解WEB相关概念和WEB服务器概述</p>
+</li>
+<li><p>会安装、卸载、启动和关闭tomcat</p>
+</li>
+<li><p>掌握为eclipse配置tomcat</p>
+</li>
+<li><p>能够创建动态WEB项目</p>
+</li>
+<li><p>掌握使用tomcat部署项目</p>
+</li>
+</ol>
+<p><strong>二、具体讲解</strong></p>
+<p><strong>2.1**</strong>、<strong><strong>WEB</strong></strong>相关概念**</p>
+<p>1、软件架构</p>
+<p>1)      C/S：客户端/服务器端</p>
+<p>​        例如：360安全卫士、QQ等</p>
+<p>2)      B/S：浏览器/服务器端</p>
+<p>​            例如：淘宝网、京东网、微博、bilibili等</p>
+<p>\2. 资源分类</p>
+<p>1)       静态资源：所有用户访问后，得到的结果都是一样的，称为静态资源.静态资源可以直接被浏览器解析如： html,css,JavaScript</p>
+<p>2)       动态资源:每个用户访问相同资源后，得到的结果可能不一样。称为动态资源。动态资源被访问后，需要先转换为静态资源，在返回给浏览器如：servlet/jsp,php,asp….</p>
+<p>\3. 网络通信三要素</p>
+<p>1)       IP：电子设备(计算机)在网络中的唯一标识。</p>
+<p>2)       端口：应用程序在计算机中的唯一标识。 0~65536</p>
+<p>3)       传输协议：规定了数据传输的规则</p>
+<p>\4. 基础协议：</p>
+<p>1)       tcp:安全协议，三次握手、四次挥手。 速度稍慢</p>
+<p>2)       udp：不安全协议。 速度快</p>
+<p><strong>2.2**</strong>、<strong><strong>WEB</strong></strong>服务器**</p>
+<p>1、服务器：安装了服务器软件的计算机</p>
+<p>2、服务器软件：接收用户的请求，处理请求，做出响应</p>
+<p>3、web服务器软件：接收用户的请求，处理请求，做出响应。</p>
+<p><strong>在web**</strong>服务器软件中，可以部署web<strong>**项目，让用户通过浏览器来访问这些项目</strong></p>
+<p><strong>web**</strong>容器**</p>
+<p>4、常见的java相关的web服务器软件：</p>
+<p>Tomcat：Apache基金组织，中小型的JavaEE服务器，仅仅支持少量的JavaEE规范</p>
+<p>servlet/jsp。开源的，免费</p>
+<p>webLogic：oracle公司，大型的JavaEE服务器，支持所有的JavaEE规范，收费的。</p>
+<p>webSphere：IBM公司，大型的JavaEE服务器，支持所有的JavaEE规范，收费的。</p>
+<p>JBOSS：JBOSS公司的，大型的JavaEE服务器，支持所有的JavaEE规范，收费的。</p>
+<p><strong>2.3**</strong>、<strong><strong>Tomcat</strong></strong>服务器下载、安装、启动、关闭**</p>
+<p>\1. 下载：<a href="http://tomcat.apache.org/" target="_blank" rel="noopener">http://tomcat.apache.org/</a> </p>
+<p><img src="/images/1.png" alt="image"></p>
+<p>\2. 安装：解压压缩包即可。</p>
+<p><strong>注意：安装目录建议不要有中文和空格</strong></p>
+<p>\3. 卸载：删除目录就行了</p>
+<p>\4. 启动：</p>
+<p>bin/startup.bat ,双击运行该文件即可</p>
+<p><img src="/images/2.png" alt="image"></p>
+<p>5、访问：浏览器输入：<a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a> 回车访问自己</p>
+<p><a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a> 访问别人</p>
+<p><img src="/images/3.png" alt="image"></p>
+<p>6、tomcat的关闭</p>
+<p>\1. 正常关闭：</p>
+<p>* bin/shutdown.bat</p>
+<p>* ctrl+c</p>
+<p>\2. 强制关闭：</p>
+<p>* 点击启动窗口的×</p>
+<p><strong>注意**</strong>8.5<strong>**启动过程中可能会遇到乱码问题，可以用以下方法解决</strong></p>
+<p>打开tomcat/conf/目录</p>
+<p>修改logging.properties</p>
+<p>找到</p>
+<p>java.util.logging.ConsoleHandler.encoding = utf-8这行</p>
+<p>更改为</p>
+<p>java.util.logging.ConsoleHandler.encoding = GBK</p>
+<p><strong>2.4**</strong>、掌握为<strong><strong>eclipse</strong></strong>配置<strong>**tomcat</strong></p>
+<p><img src="/images/4.png" alt="image"></p>
+<p><img src="/images/5.png" alt="image"></p>
+<p>!<img src="/images/6.png" alt="image"></p>
+<p><img src="/images/7.png" alt="image"></p>
+<p><strong>2.5**</strong>、创建第一个<strong><strong>JavaWeb</strong></strong>项目并部署**</p>
+<p>1、新建Web程序，然后测试服务器工作状态<br> new -&gt;new project -&gt;web -&gt; dynamic web project</p>
+<p><img src="/images/8.png" alt="image"></p>
+<p><img src="/images/9.png" alt="image"></p>
+<p><img src="/images/10.png" alt="image"></p>
+<p><strong>2、**</strong>部署<strong><strong>javaweb</strong></strong>项目**</p>
+<p>右键选择项目，然后run as</p>
+<p><img src="/images/11.png" alt="image"></p>
+<p><img src="/images/12.png" alt="image"></p>
+<p><img src="/images/13.png" alt="image"></p>
+<p><img src="/images/14.png" alt="image"></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="/music/dshh.flac">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

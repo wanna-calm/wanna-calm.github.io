@@ -1,0 +1,524 @@
+
+<!DOCTYPE html>
+<html lang="中文" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>动态网站开发第六次课讲义 - 虚掷的青春</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="动态网站开发第六次课讲义**
+一、学习目标
+1、数据库连接池
+2、JdbcTemplate
+3、分页显示数据
+4、Filter
+5、ajax与json
+6、文件上传
+二、具体讲解
+2.1**、数据库,"> 
+    <meta name="author" content="刘亚平"> 
+    <link rel="alternative" href="atom.xml" title="虚掷的青春" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">虚掷的青春</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">动态网站开发第六次课讲义</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">动态网站开发第六次课讲义</h1>
+        <div class="stuff">
+            <span>二月 17, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>动态网站开发第六次课讲义**</p>
+<p><strong>一、学习目标</strong></p>
+<p>1、数据库连接池</p>
+<p>2、JdbcTemplate</p>
+<p>3、分页显示数据</p>
+<p>4、Filter</p>
+<p>5、ajax与json</p>
+<p>6、文件上传</p>
+<p><strong>二、具体讲解</strong></p>
+<p><strong>2.1**</strong>、数据库连接池**</p>
+<p><strong>2.1.1**</strong>、简介**</p>
+<p>数据库连接池负责分配、管理和释放数据库连接，它允许应用程序重复使用一个现有的数据库连接，而不是再重新建立一个；释放空闲时间超过最大空闲时间的数据库连接来避免因为没有释放数据库连接而引起的数据库连接遗漏。这项技术能明显提高对数据库操作的性能。</p>
+<p><strong>2.1.2**</strong>、常用数据库连接池**</p>
+<p><img src="/images/27.png" alt="image"></p>
+<p>我们采用Druid数据库连接池，其它连接池可以课下了解。以下进行Druid连接池的介绍</p>
+<p><strong>2.1.3**</strong>、Druid数据库连接池简介**</p>
+<p>Druid是阿里众多优秀开源项目中的一个。它除了提供性能卓越的连接池功能外，还集成了SQL监控，黑名单拦截等功能，用它自己的话说，Druid是“为监控而生”。</p>
+<p><strong>2.1.4**</strong>、Druid数据库连接池的优点**</p>
+<p>1、<strong>是目前**</strong>java<strong>**最优秀的数据库连接池，用户量较大，中文文档比较完备</strong></p>
+<p>2、强大的监控特性，通过Druid提供的监控功能，可以清楚知道连接池和SQL的工作</p>
+<p>情况。</p>
+<p>a. 监控SQL的执行时间、ResultSet持有时间、返回行数、更新行数、错误次数、错</p>
+<p>误堆栈信息；</p>
+<p>b. SQL执行的耗时区间分布。什么是耗时区间分布呢？比如说，某个SQL执行了1000次，其中0<del>1毫秒区间50次，1</del>10毫秒800次，10<del>100毫秒100次，100</del>1000毫秒30次，1~10秒15次，10秒以上5次。通过耗时区间分布，能够非常清楚知道SQL的执行耗时情况；</p>
+<p>c. 监控连接池的物理连接创建和销毁次数、逻辑连接的申请和关闭次数、非空等待次数、PSCache命中率等。</p>
+<p>3、方便扩展。Druid提供了Filter-Chain模式的扩展API，可以自己编写Filter拦截JDBC中</p>
+<p>的 任何方法，可以在上面做任何事情，比如说性能监控、SQL审计、用户名密码加密、日志等等。</p>
+<p>4、Druid集合了开源和商业数据库连接池的优秀特性，并结合阿里巴巴大规模苛刻生产环境的使用经验进行优化。</p>
+<p><strong>2.1.5**</strong>、Druid数据库连接池的基本使用方法**</p>
+<p><strong>1**</strong>、步骤：**</p>
+<p>  \1. 导入jar包 druid-1.0.9.jar</p>
+<p>  \2. 定义配置文件：</p>
+<p>​       是properties形式的</p>
+<p>​       可以叫任意名称，可以放在任意目录下</p>
+<p>  \3. 加载配置文件。Properties</p>
+<p>  \4. 获取数据库连接池对象：通过工厂来来获取 DruidDataSourceFactory</p>
+<p>  \5. 获取连接：getConnection</p>
+<p>​    代码：</p>
+<p>​        //3.加载配置文件</p>
+<p>​     Properties pro = new Properties();  </p>
+<p>InputStream is = DruidDemo.class.getClassLoader().getResourceAsStream(“druid.properties”);</p>
+<p>​     pro.load(is);</p>
+<p>​     //4.获取连接池对象</p>
+<p>​     DataSource ds = DruidDataSourceFactory.createDataSource(pro);</p>
+<p>​     //5.获取连接</p>
+<p>​     Connection conn = ds.getConnection();</p>
+<p><strong>2**</strong>、定义工具类：**</p>
+<p>   \1. 定义一个类 JDBCUtils</p>
+<p>   \2. 提供静态代码块加载配置文件，初始化连接池对象</p>
+<p>   \3. 提供方法</p>
+<p>​       \1. 获取连接方法：通过数据库连接池获取连接</p>
+<p>​       \2. 释放资源</p>
+<p>​       \3. 获取连接池的方法</p>
+<p><strong>2.2**</strong>、JdbcTemplate**</p>
+<p><strong>2.2.1**</strong>、概述**</p>
+<p>Spring框架对JDBC的简单封装。提供了一个JDBCTemplate对象简化JDBC的开发</p>
+<p><strong>2.2.2**</strong>、JdbcTemplate<strong>**基本使用</strong></p>
+<p>步骤：</p>
+<p>​     \1. 导入jar包</p>
+<p>​     \2. 创建JdbcTemplate对象。依赖于数据源DataSource</p>
+<p>​       JdbcTemplate template = new JdbcTemplate(ds);</p>
+<p>​     \3. 调用JdbcTemplate的方法来完成CRUD的操作</p>
+<p>​       update():执行DML语句。增、删、改语句</p>
+<p>​       queryForMap():查询结果将结果集封装为map集合，将列名作为key，将值作为</p>
+<p>value 将这条记录封装为一个map集合。注意：这个方法查询的结果集长度</p>
+<p>只能是1</p>
+<p>​       queryForList():查询结果将结果集封装为list集合</p>
+<p>​             注意：将每一条记录封装为一个Map集合，再将Map集合装载到List集合中</p>
+<p>​         query():查询结果，将结果封装为JavaBean对象</p>
+<p>​             query的参数：RowMapper</p>
+<p>​                   1、一般我们使用BeanPropertyRowMapper实现类。可以完成数据</p>
+<p>到JavaBean的自动封装</p>
+<p>​                   2、new BeanPropertyRowMapper&lt;类型&gt;(类型.class)</p>
+<p>​         queryForObject：查询结果，将结果封装为对象</p>
+<p>​               一般用于聚合函数的查询</p>
+<p><strong>2.3**</strong>、分页显示数据**</p>
+<p>大部分情况下，表中有大量数据，不太可能一次性的一张表的数据显示在一个网页上，一般进行分页显示，比如：大家经常访问的淘宝网就是一页一页的进行显示的</p>
+<p>1、创建分页bean类，Page</p>
+<p>2、把dao包中的查询语句加上limit</p>
+<p>3、在service层获得数据进行按页获取</p>
+<p>3、创建分页的jsp页面</p>
+<p><strong>2.4**</strong>、Filter过滤器**</p>
+<p><strong>2.4.1**</strong>、概念：**</p>
+<p>​     生活中的过滤器：净水器,空气净化器，土匪、</p>
+<p>​     web中的过滤器：当访问服务器的资源时，过滤器可以将请求拦截下来，完成一些特</p>
+<p>殊的功能。</p>
+<p>​     过滤器的作用：</p>
+<p>​             一般用于完成通用的操作。如：登录验证、统一编码处理、敏感字符过滤…</p>
+<p><strong>2.4.2**</strong>、快速入门：**</p>
+<p>​     \1. 步骤：</p>
+<p>​         \1. 定义一个类，实现接口Filter</p>
+<p>​         \2. 复写方法</p>
+<p>​         \3. 配置拦截路径</p>
+<p>​             \1. web.xml</p>
+<p>​             \2. 注解</p>
+<p>​      \2. 代码：</p>
+<p>​             @WebFilter(“/*”)//访问所有资源之前，都会执行该过滤器</p>
+<p>​             public class FilterDemo1 implements Filter {</p>
+<p>​               @Override</p>
+<p>​               public void init(FilterConfig filterConfig) throws ServletException {</p>
+<p>​               }</p>
+<p>​               @Override</p>
+<p>​               public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {</p>
+<p>​                 System.out.println(“filterDemo1被执行了….”);</p>
+<p>​             </p>
+<p>​                 //放行</p>
+<p>​                 filterChain.doFilter(servletRequest,servletResponse);</p>
+<p>​               }</p>
+<p>​               @Override</p>
+<p>​               public void destroy() {</p>
+<p>​               }</p>
+<p>​             }</p>
+<p>​     \3. 过滤器细节：</p>
+<p>​         \1. web.xml配置   </p>
+<p>​             <filter></p>
+<p>​             <filter-name>demo1</filter-name></p>
+<p>​             <filter-class>cn.itcast.web.filter.FilterDemo1</filter-class></p>
+<p>​           </filter></p>
+<p>​           <filter-mapping></p>
+<p>​             <filter-name>demo1</filter-name></p>
+<p>​                  <!-- 拦截路径 --></p>
+<p>​             <url-pattern>/*</url-pattern></p>
+<p>​           </filter-mapping></p>
+<p>​         \2. 过滤器执行流程</p>
+<p>​             \1. 执行过滤器</p>
+<p>​             \2. 执行放行后的资源</p>
+<p>​             \3. 回来执行过滤器放行代码下边的代码</p>
+<p>​         \3. 过滤器生命周期方法</p>
+<p>​             \1. init:在服务器启动后，会创建Filter对象，然后调用init方法。只执行一次</p>
+<p>。用于加载资源</p>
+<p>​             \2. doFilter:每一次请求被拦截资源时，会执行。执行多次</p>
+<p>​             \3. destroy:在服务器关闭后，Filter对象被销毁。如果服务器是正常关闭，则</p>
+<p>会执行destroy方法。只执行一次。用于释放资源</p>
+<p>​         \4. 过滤器配置详解</p>
+<p>​             拦截路径配置：</p>
+<p>\1. 具体资源路径： /index.jsp  只有访问index.jsp资源时，过滤器才</p>
+<p>会被执行</p>
+<p>​                  \2. 拦截目录： /user/* 访问/user下的所有资源时，过滤器都会被执行</p>
+<p>​                  \3. 后缀名拦截： *.jsp     访问所有后缀名为jsp资源时，过滤器都会</p>
+<p>被执行</p>
+<p>​                  \4. 拦截所有资源：/*      访问所有资源时，过滤器都会被执行</p>
+<p>​             拦截方式配置：资源被访问的方式</p>
+<p>​                  注解配置：</p>
+<p>​                      设置dispatcherTypes属性</p>
+<p>​                           \1. REQUEST：默认值。浏览器直接请求资源</p>
+<p>​                           \2. FORWARD：转发访问资源</p>
+<p>​                           \3. INCLUDE：包含访问资源</p>
+<p>​                           \4. ERROR：错误跳转资源</p>
+<p>​                           \5. ASYNC：异步访问资源</p>
+<p>​                  web.xml配置</p>
+<p>​                       设置<dispatcher></dispatcher>标签即可      </p>
+<p>​         \5. 过滤器链(配置多个过滤器)</p>
+<p>​             执行顺序：如果有两个过滤器：过滤器1和过滤器2</p>
+<p>​                  \1. 过滤器1</p>
+<p>​                  \2. 过滤器2</p>
+<p>​                  \3. 资源执行</p>
+<p>​                  \4. 过滤器2</p>
+<p>​                  \5. 过滤器1 </p>
+<p>过滤器先后顺序问题：</p>
+<p>​                  \1. 注解配置：按照类名的字符串比较规则比较，值小的先执行</p>
+<p>​                      如： AFilter 和 BFilter，AFilter就先执行了。</p>
+<p>​                  \2. web.xml配置： <filter-mapping>谁定义在上边，谁先执行</p>
+<p>\4. 案例：</p>
+<p>​         \1. 案例1_登录验证</p>
+<p>​             需求：</p>
+<p>​                  \1. 访问day17_case案例的资源。验证其是否登录</p>
+<p>​                  \2. 如果登录了，则直接放行。</p>
+<p>​                  \3. 如果没有登录，则跳转到登录页面，提示”您尚未登录，请先登录”。</p>
+<p>​         \2. 案例2_敏感词汇过滤</p>
+<p>​             需求：</p>
+<p>​                  \1. 对day17_case案例录入的数据进行敏感词汇过滤</p>
+<p>​                  \2. 敏感词汇参考《敏感词汇.txt》</p>
+<p>​                  \3. 如果是敏感词汇，替换为 *** </p>
+<p>​             分析：</p>
+<p>​                  \1. 对request对象进行增强。增强获取参数相关方法</p>
+<p>​                  \2. 放行。传递代理对象</p>
+<p>​             增强对象的功能：</p>
+<p>​                  设计模式：一些通用的解决固定问题的方式</p>
+<p>​                  \1. 装饰模式</p>
+<p>​                  \2. 代理模式</p>
+<p>​                      概念：</p>
+<p>​                           \1. 真实对象：被代理的对象</p>
+<p>​                           \2. 代理对象：</p>
+<p>​                           \3. 代理模式：代理对象代理真实对象，达到增强真实对象功</p>
+<p>能的目的</p>
+<p>​                       实现方式：</p>
+<p>​                          \1. 静态代理：有一个类文件描述代理模式</p>
+<p>​                          \2. 动态代理：在内存中形成代理类</p>
+<p>​                               实现步骤：</p>
+<p>​                                   \1. 代理对象和真实对象实现相同的接口</p>
+<p>​                                   \2. 代理对象 = Proxy.newProxyInstance();</p>
+<p>​                                   \3. 使用代理对象调用方法。</p>
+<p>​                                   \4. 增强方法</p>
+<p>​                                增强方式：</p>
+<p>​                                   \1. 增强参数列表</p>
+<p>​                                   \2. 增强返回值类型</p>
+<p>​                                   \3. 增强方法体执行逻辑</p>
+<p><strong>2.5**</strong>、ajax与json** </p>
+<p> <strong>2.5.1**</strong>、ajax<strong>**概念：</strong> </p>
+<p>ASynchronous JavaScript And XML   异步的JavaScript 和 XML</p>
+<p>要想理解ajax应该先了解异步与同步的概念</p>
+<p>​     \1. 异步和同步：客户端和服务器端相互通信的基础上</p>
+<p>​             客户端必须等待服务器端的响应。在等待的期间客户端不能做其他操作。</p>
+<p>​             客户端不需要等待服务器端的响应。在服务器处理请求的过程中，客户端可</p>
+<p>以进行其他的操作。</p>
+<p>​     Ajax 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。通过在后台与服务器进行少量数据交换，Ajax 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</p>
+<p>传统的网页（不使用 Ajax）如果需要更新内容，必须重载整个网页页面。提升用户的体验</p>
+<p><strong>2.5.2**</strong>、实现方式：**</p>
+<p>\1. 原生的JS实现方式（了解）</p>
+<p>​      1.创建核心对象</p>
+<p>​          var xmlhttp;</p>
+<p>​          if (window.XMLHttpRequest){</p>
+<p>// code for IE7+, Firefox, Chrome, Opera, Safari</p>
+<p>​               xmlhttp=new XMLHttpRequest();</p>
+<p>​          }else{</p>
+<p>// code for IE6, IE5</p>
+<p>​               xmlhttp=new ActiveXObject(“Microsoft.XMLHTTP”);</p>
+<p>​          }</p>
+<p>​       \2. 建立连接</p>
+<p>​       /*</p>
+<p>​          参数：</p>
+<p>​            \1. 请求方式：GET、POST</p>
+<p>​              get方式，请求参数在URL后边拼接。send方法为空参</p>
+<p>​              post方式，请求参数在send方法中定义</p>
+<p>​            \2. 请求的URL：</p>
+<p>​            \3. 同步或异步请求：true（异步）或 false（同步）</p>
+<p>​          */</p>
+<p>​          xmlhttp.open(“GET”,”ajaxServlet?username=tom”,true);</p>
+<p>​      3.发送请求</p>
+<p>​          xmlhttp.send();</p>
+<p>​      4.接受并处理来自服务器的响应结果</p>
+<p>​          获取方式 ：xmlhttp.responseText</p>
+<p>​          什么时候获取？当服务器响应成功后再获取</p>
+<p>​        当xmlhttp对象的就绪状态改变时，触发事件onreadystatechange。</p>
+<p>​           xmlhttp.onreadystatechange=function(){</p>
+<p>​             //判断readyState就绪状态是否为4，判断status响应状态码是否为200</p>
+<p>​             if (xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200){</p>
+<p>​                   //获取服务器的响应结果</p>
+<p>​                   var responseText = xmlhttp.responseText;</p>
+<p>​                    alert(responseText);</p>
+<p>​             }</p>
+<p>​           }</p>
+<p>2、jquery方式实现</p>
+<p>\1. $.ajax()</p>
+<p>​         语法：$.ajax({键值对});</p>
+<p>​         使用$.ajax()发送异步请求</p>
+<p>​       $.ajax({</p>
+<p>​           url:”ajaxServlet1111” , // 请求路径</p>
+<p>​           type:”POST” , //请求方式</p>
+<p>​           data: “username=jack&amp;age=23”,//请求参数</p>
+<p>​           data:{“username”:”jack”,”age”:23},</p>
+<p>​             success:function (data) {</p>
+<p>​                alert(data);</p>
+<p>​              },//响应成功后的回调函数</p>
+<p>​             error:function () {</p>
+<p>​                alert(“出错啦…”)</p>
+<p>​             },//表示如果请求响应出现错误，会执行的回调函数</p>
+<p>​             dataType:”text”//设置接受到的响应数据的格式</p>
+<p>​           });</p>
+<p>​      \2. $.get()：发送get请求</p>
+<p>​          语法：$.get(url, [data], [callback], [type])</p>
+<p>​              参数：</p>
+<p>​                   url：请求路径</p>
+<p>​                   data：请求参数</p>
+<p>​                   callback：回调函数</p>
+<p>​                   type：响应结果的类型</p>
+<p>​      \3. $.post()：发送post请求</p>
+<p>​          语法：$.post(url, [data], [callback], [type])</p>
+<p>​             参数：</p>
+<p>​                    url：请求路径</p>
+<p>​                    data：请求参数</p>
+<p>​                    callback：回调函数</p>
+<p>​                    type：响应结果的类型</p>
+<p><strong>2.5.3**</strong>、json<strong>**讲解</strong></p>
+<p>\1. 概念： JavaScript Object Notation      JavaScript对象表示法</p>
+<p>​         Person p = new Person();</p>
+<p>​         p.setName(“张三”);</p>
+<p>​         p.setAge(23);</p>
+<p>​         p.setGender(“男”);</p>
+<p>​         var p = {“name”:”张三”,”age”:23,”gender”:”男”};</p>
+<p>json现在多用于存储和交换文本信息的语法</p>
+<p>​         进行数据的传输</p>
+<p>​         JSON 比 XML 更小、更快，更易解析。</p>
+<p>\2. 语法：</p>
+<p>​     \1. 基本规则</p>
+<p>​       数据在名称/值对中：json数据是由键值对构成的</p>
+<p>​          键用引号(单双都行)引起来，也可以不使用引号</p>
+<p>​          值得取值类型：</p>
+<p>​                      \1. 数字（整数或浮点数）</p>
+<p>​                      \2. 字符串（在双引号中）</p>
+<p>​                      \3. 逻辑值（true 或 false）</p>
+<p>​                      \4. 数组（在方括号中）    {“persons”:[{},{}]}</p>
+<p>​                      \5. 对象（在花括号中） {“address”:{“province”：”陕西”….}}</p>
+<p>​                      \6. null</p>
+<p>​             数据由逗号分隔：多个键值对由逗号分隔</p>
+<p>​             花括号保存对象：使用{}定义json 格式</p>
+<p>​             方括号保存数组：[]</p>
+<p>​      \2. 获取数据:</p>
+<p>​             \1. json对象.键名</p>
+<p>​             \2. json对象[“键名”]</p>
+<p>​             \3. 数组对象[索引]</p>
+<p>​             \4. 遍历</p>
+<p>​             //1.定义基本格式</p>
+<p>​             var person = {“name”: “张三”, age: 23, ‘gender’: true};</p>
+<p>​             var ps = [{“name”: “张三”, “age”: 23, “gender”: true},</p>
+<p>​                 {“name”: “李四”, “age”: 24, “gender”: true},</p>
+<p>​                 {“name”: “王五”, “age”: 25, “gender”: false}];</p>
+<p>​              //获取person对象中所有的键和值</p>
+<p>​              //for in 循环</p>
+<p>​              for(var key in person){</p>
+<p>​                 这样的方式获取不行。因为相当于 person.”name”</p>
+<p>​                 alert(key + “:” + person.key);</p>
+<p>​                 alert(key+”:”+person[key]);</p>
+<p>​               }</p>
+<p>​              //获取ps中的所有值</p>
+<p>​              for (var i = 0; i &lt; ps.length; i++) {</p>
+<p>​                 var p = ps[i];</p>
+<p>​                 for(var key in p){</p>
+<p>​                     alert(key+”:”+p[key]);</p>
+<p>​                 }</p>
+<p>​              }</p>
+<p>​     \3. JSON数据和Java对象的相互转换</p>
+<p> JSON解析器：</p>
+<p>​          常见的解析器：Jsonlib，Gson，fastjson，jackson</p>
+<p>​          \1. JSON转为Java对象</p>
+<p>​             \1. 导入jackson的相关jar包</p>
+<p>​             \2. 创建Jackson核心对象 ObjectMapper</p>
+<p>​             \3. 调用ObjectMapper的相关方法进行转换</p>
+<p>​                  \1. readValue(json字符串数据,Class)</p>
+<p>\2. Java对象转换JSON</p>
+<p>​             \1. 使用步骤：</p>
+<p>​                  \1. 导入jackson的相关jar包</p>
+<p>​                  \2. 创建Jackson核心对象 ObjectMapper</p>
+<p>​                  \3. 调用ObjectMapper的相关方法进行转换</p>
+<p>​                   \1. 转换方法：</p>
+<p>​                       writeValue(参数1，obj):</p>
+<p>​                 参数1：</p>
+<p>​                  File：将obj对象转换为JSON字符串，并保存到指定的文件中</p>
+<p>​                  Writer：将obj对象转换为JSON字符串，并将json数据填充</p>
+<p>到字符输出流中</p>
+<p>​                  OutputStream：将obj对象转换为JSON字符串，并将json数</p>
+<p>据填充到字节输出流中</p>
+<p>​                  writeValueAsString(obj):将对象转为json字符串</p>
+<p>​                      \2. 注解：</p>
+<p>​                           \1. @JsonIgnore：排除属性。</p>
+<p>​                           \2. @JsonFormat：属性值得格式化</p>
+<p>​                             @JsonFormat(pattern = “yyyy-MM-dd”)</p>
+<p>\3. 复杂java对象转换</p>
+<p>​                           \1. List：数组</p>
+<p>​                           \2. Map：对象格式一致</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="/music/dshh.flac">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

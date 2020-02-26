@@ -1,0 +1,767 @@
+
+<!DOCTYPE html>
+<html lang="中文" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2.14课件  el表达式,JSTL标签库 - 虚掷的青春</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="jdk下载地址：
+https://www.oracle.com/cn/java/technologies/javase-jdk8-downloads.html
+eclipse下载：
+链接:https,"> 
+    <meta name="author" content="刘亚平"> 
+    <link rel="alternative" href="atom.xml" title="虚掷的青春" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">虚掷的青春</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">2.14课件  el表达式,JSTL标签库</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">2.14课件  el表达式,JSTL标签库</h1>
+        <div class="stuff">
+            <span>二月 17, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/JavaWeb-%E5%9F%BA%E7%A1%80/" rel="tag">JavaWeb 基础</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>jdk下载地址：</p>
+<p><a href="https://www.oracle.com/cn/java/technologies/javase-jdk8-downloads.html" target="_blank" rel="noopener">https://www.oracle.com/cn/java/technologies/javase-jdk8-downloads.html</a></p>
+<p>eclipse下载：</p>
+<p>链接:<a href="https://pan.baidu.com/s/19WCcM6VenXzSwCcGlRIsNw" target="_blank" rel="noopener">https://pan.baidu.com/s/19WCcM6VenXzSwCcGlRIsNw</a>  密码:0dmg</p>
+<p>Tomcat下载：</p>
+<p><a href="https://tomcat.apache.org/download-80.cgi" target="_blank" rel="noopener">https://tomcat.apache.org/download-80.cgi</a></p>
+<h2 id="el表达式"><a href="#el表达式" class="headerlink" title="el表达式"></a>el表达式</h2><p>EL表达式支持的算术运算符和逻辑运算符</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>操作符</strong></th>
+<th align="left"><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">.</td>
+<td align="left">访问一个Bean属性或者一个映射条目</td>
+</tr>
+<tr>
+<td align="left">[]</td>
+<td align="left">访问一个数组或者链表的元素</td>
+</tr>
+<tr>
+<td align="left">( )</td>
+<td align="left">组织一个子表达式以改变优先级</td>
+</tr>
+<tr>
+<td align="left">+</td>
+<td align="left">加</td>
+</tr>
+<tr>
+<td align="left">-</td>
+<td align="left">减或负</td>
+</tr>
+<tr>
+<td align="left">*</td>
+<td align="left">乘</td>
+</tr>
+<tr>
+<td align="left">/ or div</td>
+<td align="left">除</td>
+</tr>
+<tr>
+<td align="left">% or mod</td>
+<td align="left">取模</td>
+</tr>
+<tr>
+<td align="left">== or eq</td>
+<td align="left">测试是否相等</td>
+</tr>
+<tr>
+<td align="left">!= or ne</td>
+<td align="left">测试是否不等</td>
+</tr>
+<tr>
+<td align="left">&lt; or lt</td>
+<td align="left">测试是否小于</td>
+</tr>
+<tr>
+<td align="left">&gt; or gt</td>
+<td align="left">测试是否大于</td>
+</tr>
+<tr>
+<td align="left">&lt;= or le</td>
+<td align="left">测试是否小于等于</td>
+</tr>
+<tr>
+<td align="left">&gt;= or ge</td>
+<td align="left">测试是否大于等于</td>
+</tr>
+<tr>
+<td align="left">&amp;&amp; or and</td>
+<td align="left">测试逻辑与</td>
+</tr>
+<tr>
+<td align="left">|| or or</td>
+<td align="left">测试逻辑或</td>
+</tr>
+<tr>
+<td align="left">! or not</td>
+<td align="left">测试取反</td>
+</tr>
+<tr>
+<td align="left">empty</td>
+<td align="left">测试是否空值</td>
+</tr>
+</tbody></table>
+<p>EL表达式的隐含对象</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>隐含对象</strong></th>
+<th align="left"><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">pageScope</td>
+<td align="left">page 作用域</td>
+</tr>
+<tr>
+<td align="left"><strong><u>requestScope</u></strong></td>
+<td align="left">request 作用域</td>
+</tr>
+<tr>
+<td align="left"><strong><u>sessionScope</u></strong></td>
+<td align="left">session 作用域</td>
+</tr>
+<tr>
+<td align="left">applicationScope</td>
+<td align="left">application 作用域</td>
+</tr>
+<tr>
+<td align="left">param</td>
+<td align="left">Request 对象的参数，字符串</td>
+</tr>
+<tr>
+<td align="left">paramValues</td>
+<td align="left">Request对象的参数，字符串集合</td>
+</tr>
+<tr>
+<td align="left">header</td>
+<td align="left">HTTP 信息头，字符串</td>
+</tr>
+<tr>
+<td align="left">headerValues</td>
+<td align="left">HTTP 信息头，字符串集合</td>
+</tr>
+<tr>
+<td align="left">initParam</td>
+<td align="left">上下文初始化参数</td>
+</tr>
+<tr>
+<td align="left">cookie</td>
+<td align="left">Cookie值</td>
+</tr>
+<tr>
+<td align="left">pageContext</td>
+<td align="left">当前页面的pageContext</td>
+</tr>
+</tbody></table>
+<h2 id="JSTL标签库"><a href="#JSTL标签库" class="headerlink" title="JSTL标签库"></a>JSTL标签库</h2><table>
+<thead>
+<tr>
+<th align="left">标签</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">&lt;c:out&gt;</td>
+<td align="left">用于在JSP中显示数据，就像&lt;%= … &gt;</td>
+</tr>
+<tr>
+<td align="left">&lt;c:set&gt;</td>
+<td align="left">用于保存数据</td>
+</tr>
+<tr>
+<td align="left">&lt;c:remove&gt;</td>
+<td align="left">用于删除数据</td>
+</tr>
+<tr>
+<td align="left">&lt;c:catch&gt;</td>
+<td align="left">用来处理产生错误的异常状况，并且将错误信息储存起来</td>
+</tr>
+<tr>
+<td align="left">&lt;c:if&gt;</td>
+<td align="left">与我们在一般程序中用的if一样</td>
+</tr>
+<tr>
+<td align="left">&lt;c:choose&gt;</td>
+<td align="left">本身只当做&lt;c:when&gt;和&lt;c:otherwise&gt;的父标签</td>
+</tr>
+<tr>
+<td align="left">&lt;c:when&gt;</td>
+<td align="left">&lt;c:choose&gt;的子标签，用来判断条件是否成立</td>
+</tr>
+<tr>
+<td align="left">&lt;c:otherwise&gt;</td>
+<td align="left">&lt;c:choose&gt;的子标签，接在&lt;c:when&gt;标签后，当&lt;c:when&gt;标签判断为false时被执行</td>
+</tr>
+<tr>
+<td align="left">&lt;c:import&gt;</td>
+<td align="left">检索一个绝对或相对 URL，然后将其内容暴露给页面</td>
+</tr>
+<tr>
+<td align="left">&lt;c:forEach&gt;</td>
+<td align="left">基础迭代标签，接受多种集合类型</td>
+</tr>
+<tr>
+<td align="left">&lt;c:forTokens&gt;</td>
+<td align="left">根据指定的分隔符来分隔内容并迭代输出</td>
+</tr>
+<tr>
+<td align="left">&lt;c:param&gt;</td>
+<td align="left">用来给包含或重定向的页面传递参数</td>
+</tr>
+<tr>
+<td align="left">&lt;c:redirect&gt;</td>
+<td align="left">重定向至一个新的URL.</td>
+</tr>
+<tr>
+<td align="left">&lt;c:url&gt;</td>
+<td align="left">使用可选的查询参数来创造一个URL</td>
+</tr>
+</tbody></table>
+<p>解释：</p>
+<h3 id="lt-c-out-gt"><a href="#lt-c-out-gt" class="headerlink" title="&lt;c:out&gt;"></a>&lt;c:out&gt;</h3><p>标签有如下属性：</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>属性</strong></th>
+<th align="left"><strong>描述</strong></th>
+<th align="left"><strong>是否必要</strong></th>
+<th align="left"><strong>默认值</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">value</td>
+<td align="left">要输出的内容</td>
+<td align="left">是</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">default</td>
+<td align="left">输出的默认值</td>
+<td align="left">否</td>
+<td align="left">主体中的内容</td>
+</tr>
+<tr>
+<td align="left">escapeXml</td>
+<td align="left">是否忽略XML特殊字符</td>
+<td align="left">否</td>
+<td align="left">true</td>
+</tr>
+</tbody></table>
+<p>示例：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> prefix=<span class="string">"c"</span> %&gt;</span><br><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;c:out 标签实例&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;&amp;lt;c:out&amp;gt; 实例&lt;/h1&gt;</span><br><span class="line">        &lt;c:out value="&amp;lt要显示的数据对象（未使用转义字符）&amp;gt" escapeXml="true" default="默认值"&gt;&lt;/c:out&gt;&lt;br/&gt;</span><br><span class="line">          &lt;c:out value="&amp;lt要显示的数据对象（使用转义字符）&amp;gt" escapeXml="false" default="默认值"&gt;&lt;/c:out&gt;&lt;br/&gt;</span><br><span class="line">    &lt;c:out value="$&#123;null&#125;" escapeXml="false"&gt;使用的表达式结果为null，则输出该默认值&lt;/c:out&gt;&lt;br/&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="lt-c-set-gt"><a href="#lt-c-set-gt" class="headerlink" title="&lt;c:set&gt;"></a>&lt;c:set&gt;</h3><p>标签有如下属性：</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>属性</strong></th>
+<th align="left"><strong>描述</strong></th>
+<th align="left"><strong>是否必要</strong></th>
+<th align="left"><strong>默认值</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">value</td>
+<td align="left">要存储的值</td>
+<td align="left">否</td>
+<td align="left">主体的内容</td>
+</tr>
+<tr>
+<td align="left">target</td>
+<td align="left">要修改的属性所属的对象</td>
+<td align="left">否</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">property</td>
+<td align="left">要修改的属性</td>
+<td align="left">否</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">var</td>
+<td align="left">存储信息的变量</td>
+<td align="left">否</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">scope</td>
+<td align="left">var属性的作用域</td>
+<td align="left">否</td>
+<td align="left">Page</td>
+</tr>
+</tbody></table>
+<p>如果指定了target属性，那么property属性也需要被指定。</p>
+<p>例：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> prefix=<span class="string">"c"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;c:set 标签实例&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;c:set <span class="keyword">var</span>=<span class="string">"salary"</span> scope=<span class="string">"session"</span> value=<span class="string">"$&#123;2000*2&#125;"</span>/&gt;</span><br><span class="line">&lt;c:out value=<span class="string">"$&#123;salary&#125;"</span>/&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="lt-c-remove-gt"><a href="#lt-c-remove-gt" class="headerlink" title="&lt;c:remove&gt;"></a>&lt;c:remove&gt;</h3><p>标签有如下属性：</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>属性</strong></th>
+<th align="left"><strong>描述</strong></th>
+<th align="left"><strong>是否必要</strong></th>
+<th align="left"><strong>默认值</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">var</td>
+<td align="left">要移除的变量名称</td>
+<td align="left">是</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">scope</td>
+<td align="left">变量所属的作用域</td>
+<td align="left">否</td>
+<td align="left">所有作用域</td>
+</tr>
+</tbody></table>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> prefix=<span class="string">"c"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;c:remove 标签实例&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;c:set <span class="keyword">var</span>=<span class="string">"salary"</span> scope=<span class="string">"session"</span> value=<span class="string">"$&#123;2000*2&#125;"</span>/&gt;</span><br><span class="line">&lt;p&gt;salary 变量值: &lt;c:out value="$&#123;salary&#125;"/&gt;&lt;/p&gt;</span><br><span class="line">&lt;c:remove <span class="keyword">var</span>=<span class="string">"salary"</span>/&gt;</span><br><span class="line">&lt;p&gt;删除 salary 变量后的值: &lt;c:out value="$&#123;salary&#125;"/&gt;&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="lt-c-catch-gt"><a href="#lt-c-catch-gt" class="headerlink" title="&lt;c:catch&gt;"></a>&lt;c:catch&gt;</h3><p>标签有如下属性：</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">描述</th>
+<th align="left">是否必要</th>
+<th align="left">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">var</td>
+<td align="left">用来储存错误信息的变量</td>
+<td align="left">否</td>
+<td align="left">None</td>
+</tr>
+</tbody></table>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> prefix=<span class="string">"c"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;c:catch 标签实例&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;c:<span class="keyword">catch</span> <span class="keyword">var</span> =<span class="string">"catchException"</span>&gt;</span><br><span class="line">   &lt;% <span class="keyword">int</span> x = <span class="number">5</span>/<span class="number">0</span>;%&gt;</span><br><span class="line">&lt;/c:catch&gt;</span><br><span class="line"></span><br><span class="line">&lt;c:<span class="keyword">if</span> test = <span class="string">"$&#123;catchException != null&#125;"</span>&gt;</span><br><span class="line">   &lt;p&gt;异常为 : $&#123;catchException&#125; &lt;br /&gt;</span><br><span class="line">   发生了异常: $&#123;catchException.message&#125;&lt;/p&gt;</span><br><span class="line">&lt;/c:if&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="lt-c-if-gt"><a href="#lt-c-if-gt" class="headerlink" title="&lt;c:if&gt;"></a><u>&lt;c:if&gt;</u></h3><p>标签有如下属性：</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>属性</strong></th>
+<th align="left"><strong>描述</strong></th>
+<th align="left"><strong>是否必要</strong></th>
+<th align="left"><strong>默认值</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">test</td>
+<td align="left">条件</td>
+<td align="left">是</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">var</td>
+<td align="left">用于存储条件结果的变量</td>
+<td align="left">否</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">scope</td>
+<td align="left">var属性的作用域</td>
+<td align="left">否</td>
+<td align="left">page</td>
+</tr>
+</tbody></table>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> prefix=<span class="string">"c"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;c:if 标签实例&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;c:set <span class="keyword">var</span>=<span class="string">"salary"</span> scope=<span class="string">"session"</span> value=<span class="string">"$&#123;2000*2&#125;"</span>/&gt;</span><br><span class="line">&lt;c:<span class="keyword">if</span> test=<span class="string">"$&#123;salary &gt; 2000&#125;"</span>&gt;</span><br><span class="line">   &lt;p&gt;我的工资为: &lt;c:out value=<span class="string">"$&#123;salary&#125;"</span>/&gt;&lt;p&gt;</span><br><span class="line">&lt;/c:if&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="lt-c-choose-gt-、-lt-c-when-gt-、-lt-c-otherwise-gt"><a href="#lt-c-choose-gt-、-lt-c-when-gt-、-lt-c-otherwise-gt" class="headerlink" title="&lt;c:choose&gt;、&lt;c:when&gt;、&lt;c:otherwise&gt;"></a>&lt;c:choose&gt;、&lt;c:when&gt;、&lt;c:otherwise&gt;</h3><p> 语法格式</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:choose&gt;</span><br><span class="line">    &lt;c:when test=<span class="string">"&lt;boolean&gt;"</span>&gt;</span><br><span class="line">        ...</span><br><span class="line">    &lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test=<span class="string">"&lt;boolean&gt;"</span>&gt;</span><br><span class="line">        ...</span><br><span class="line">    &lt;/c:when&gt;</span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    &lt;c:otherwise&gt;</span><br><span class="line">        ...</span><br><span class="line">    &lt;/c:otherwise&gt;</span><br><span class="line">&lt;/c:choose&gt;</span><br></pre></td></tr></table></figure>
+
+<p>&lt;c:choose&gt;标签没有属性。</p>
+<p>&lt;c:when&gt;标签只有一个属性，在下表中有给出。</p>
+<p>&lt;c:otherwise&gt;标签没有属性。</p>
+<p>&lt;c:when&gt;标签的属性如下：</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>属性</strong></th>
+<th align="left"><strong>描述</strong></th>
+<th align="left"><strong>是否必要</strong></th>
+<th align="left"><strong>默认值</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">test</td>
+<td align="left">条件</td>
+<td align="left">是</td>
+<td align="left">无</td>
+</tr>
+</tbody></table>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> prefix=<span class="string">"c"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;c:choose 标签实例&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;c:set <span class="keyword">var</span>=<span class="string">"salary"</span> scope=<span class="string">"session"</span> value=<span class="string">"$&#123;2000*2&#125;"</span>/&gt;</span><br><span class="line">&lt;p&gt;你的工资为 : &lt;c:out value="$&#123;salary&#125;"/&gt;&lt;/p&gt;</span><br><span class="line">&lt;c:choose&gt;</span><br><span class="line">    &lt;c:when test=<span class="string">"$&#123;salary &lt;= 0&#125;"</span>&gt;</span><br><span class="line">       太惨了。</span><br><span class="line">    &lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test=<span class="string">"$&#123;salary &gt; 1000&#125;"</span>&gt;</span><br><span class="line">       不错的薪水，还能生活。</span><br><span class="line">    &lt;/c:when&gt;</span><br><span class="line">    &lt;c:otherwise&gt;</span><br><span class="line">        什么都没有。</span><br><span class="line">    &lt;/c:otherwise&gt;</span><br><span class="line">&lt;/c:choose&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="lt-c-import-gt"><a href="#lt-c-import-gt" class="headerlink" title="&lt;c:import&gt;"></a>&lt;c:import&gt;</h3><p>标签有如下属性：</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>属性</strong></th>
+<th align="left"><strong>描述</strong></th>
+<th align="left"><strong>是否必要</strong></th>
+<th align="left"><strong>默认值</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">url</td>
+<td align="left">待导入资源的URL，可以是相对路径和绝对路径，并且可以导入其他主机资源</td>
+<td align="left">是</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">context</td>
+<td align="left">当使用相对路径访问外部context资源时，context指定了这个资源的名字。</td>
+<td align="left">否</td>
+<td align="left">当前应用程序</td>
+</tr>
+<tr>
+<td align="left">charEncoding</td>
+<td align="left">所引入的数据的字符编码集</td>
+<td align="left">否</td>
+<td align="left">ISO-8859-1</td>
+</tr>
+<tr>
+<td align="left">var</td>
+<td align="left">用于存储所引入的文本的变量</td>
+<td align="left">否</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">scope</td>
+<td align="left">var属性的作用域</td>
+<td align="left">否</td>
+<td align="left">page</td>
+</tr>
+<tr>
+<td align="left">varReader</td>
+<td align="left">可选的用于提供java.io.Reader对象的变量</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> prefix=<span class="string">"c"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;c:import 标签实例&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;c:<span class="keyword">import</span> <span class="keyword">var</span>=<span class="string">"data"</span> url=<span class="string">"http://www.baidu.com"</span> charEncoding=<span class="string">"UTF-8"</span>/&gt;</span><br><span class="line">&lt;c:out value=<span class="string">"$&#123;data&#125;"</span>/&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="lt-c-forEach-gt-和-lt-c-forTokens-gt"><a href="#lt-c-forEach-gt-和-lt-c-forTokens-gt" class="headerlink" title="&lt;c:forEach&gt;和&lt;c:forTokens&gt;"></a><u>&lt;c:forEach&gt;</u>和&lt;c:forTokens&gt;</h3><p>这些标签封装了Java中的for，while，do-while循环。</p>
+<p>相比而言，&lt;c:forEach&gt;标签是更加通用的标签，因为它迭代一个集合中的对象。</p>
+<p>&lt;c:forTokens&gt;标签通过指定分隔符将字符串分隔为一个数组然后迭代它们。</p>
+<hr>
+<p>forEach 语法格式</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:forEach</span><br><span class="line">    items=<span class="string">"&lt;object&gt;"</span></span><br><span class="line">    begin=<span class="string">"&lt;int&gt;"</span></span><br><span class="line">    end=<span class="string">"&lt;int&gt;"</span></span><br><span class="line">    step=<span class="string">"&lt;int&gt;"</span></span><br><span class="line">    <span class="keyword">var</span>=<span class="string">"&lt;string&gt;"</span></span><br><span class="line">    varStatus=<span class="string">"&lt;string&gt;"</span>&gt;</span><br><span class="line"></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+<p>forTokens 语法格式</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:forTokens</span><br><span class="line">    items=<span class="string">"&lt;string&gt;"</span></span><br><span class="line">    delims=<span class="string">"&lt;string&gt;"</span></span><br><span class="line">    begin=<span class="string">"&lt;int&gt;"</span></span><br><span class="line">    end=<span class="string">"&lt;int&gt;"</span></span><br><span class="line">    step=<span class="string">"&lt;int&gt;"</span></span><br><span class="line">    <span class="keyword">var</span>=<span class="string">"&lt;string&gt;"</span></span><br><span class="line">    varStatus=<span class="string">"&lt;string&gt;"</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>&lt;c:forEach&gt;标签有如下属性：</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>属性</strong></th>
+<th align="left"><strong>描述</strong></th>
+<th align="left"><strong>是否必要</strong></th>
+<th align="left"><strong>默认值</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">items</td>
+<td align="left">要被循环的信息</td>
+<td align="left">否</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">begin</td>
+<td align="left">开始的元素（0=第一个元素，1=第二个元素）</td>
+<td align="left">否</td>
+<td align="left">0</td>
+</tr>
+<tr>
+<td align="left">end</td>
+<td align="left">最后一个元素（0=第一个元素，1=第二个元素）</td>
+<td align="left">否</td>
+<td align="left">Last element</td>
+</tr>
+<tr>
+<td align="left">step</td>
+<td align="left">每一次迭代的步长</td>
+<td align="left">否</td>
+<td align="left">1</td>
+</tr>
+<tr>
+<td align="left">var</td>
+<td align="left">代表当前条目的变量名称</td>
+<td align="left">否</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">varStatus</td>
+<td align="left">代表循环状态的变量名称</td>
+<td align="left">否</td>
+<td align="left">无</td>
+</tr>
+</tbody></table>
+<p>&lt;c:forTokens&gt;标签与&lt;c:forEach&gt;标签有相似的属性，不过&lt;c:forTokens&gt;还有另一个属性：</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>属性</strong></th>
+<th align="left"><strong>描述</strong></th>
+<th align="left"><strong>是否必要</strong></th>
+<th align="left"><strong>默认值</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">delims</td>
+<td align="left">分隔符</td>
+<td align="left">是</td>
+<td align="left">无</td>
+</tr>
+</tbody></table>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> prefix=<span class="string">"c"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;c:forEach 标签实例&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;c:forEach <span class="keyword">var</span>=<span class="string">"i"</span> begin=<span class="string">"1"</span> end=<span class="string">"5"</span>&gt;</span><br><span class="line">   Item &lt;c:out value=<span class="string">"$&#123;i&#125;"</span>/&gt;&lt;p&gt;</span><br><span class="line">&lt;/c:forEach&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> prefix=<span class="string">"c"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;c:forTokens 标签实例&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;c:forTokens items=<span class="string">"google,runoob,taobao"</span> delims=<span class="string">","</span> <span class="keyword">var</span>=<span class="string">"name"</span>&gt;</span><br><span class="line">   &lt;c:out value=<span class="string">"$&#123;name&#125;"</span>/&gt;&lt;p&gt;</span><br><span class="line">&lt;/c:forTokens&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="lt-c-param-gt"><a href="#lt-c-param-gt" class="headerlink" title="&lt;c:param&gt;"></a>&lt;c:param&gt;</h3><p>标签有如下属性：</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>属性</strong></th>
+<th align="left"><strong>描述</strong></th>
+<th align="left"><strong>是否必要</strong></th>
+<th align="left"><strong>默认值</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">name</td>
+<td align="left">URL中要设置的参数的名称</td>
+<td align="left">是</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">value</td>
+<td align="left">参数的值</td>
+<td align="left">否</td>
+<td align="left">Body</td>
+</tr>
+</tbody></table>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> prefix=<span class="string">"c"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;c:forTokens 标签实例&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;&amp;lt;c:param&amp;gt; 实例&lt;/h1&gt;</span><br><span class="line">		&lt;c:url <span class="keyword">var</span>=<span class="string">"myURL"</span> value=<span class="string">"account/account?cmd=login"</span>&gt;</span><br><span class="line">			&lt;c:param name=<span class="string">"username"</span> value=<span class="string">"test1"</span> /&gt;</span><br><span class="line">			&lt;c:param name=<span class="string">"password"</span> value=<span class="string">"123"</span> /&gt;</span><br><span class="line">		&lt;/c:url&gt;</span><br><span class="line">		&lt;a href=<span class="string">'/&lt;c:out value="$&#123;myURL&#125;"/&gt;'</span>&gt; 使用 &amp;lt;c:param&amp;gt;</span><br><span class="line">		为指定URL发送两个参数。&lt;/a&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="lt-c-redirect-gt"><a href="#lt-c-redirect-gt" class="headerlink" title="&lt;c:redirect&gt;"></a>&lt;c:redirect&gt;</h3><p>标签有如下属性：</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>属性</strong></th>
+<th align="left"><strong>描述</strong></th>
+<th align="left"><strong>是否必要</strong></th>
+<th align="left"><strong>默认值</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">url</td>
+<td align="left">目标URL</td>
+<td align="left">是</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">context</td>
+<td align="left">紧接着一个本地网络应用程序的名称</td>
+<td align="left">否</td>
+<td align="left">当前应用程序</td>
+</tr>
+</tbody></table>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> prefix=<span class="string">"c"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;c:redirect 标签实例&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;c:redirect url=<span class="string">"http://www.baidu.com"</span>/&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="lt-c-url-gt"><a href="#lt-c-url-gt" class="headerlink" title="&lt;c:url&gt;"></a>&lt;c:url&gt;</h3><p>标签有如下属性：</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>属性</strong></th>
+<th align="left"><strong>描述</strong></th>
+<th align="left"><strong>是否必要</strong></th>
+<th align="left"><strong>默认值</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">value</td>
+<td align="left">基础URL</td>
+<td align="left">是</td>
+<td align="left">无</td>
+</tr>
+<tr>
+<td align="left">context</td>
+<td align="left">本地网络应用程序的名称</td>
+<td align="left">否</td>
+<td align="left">当前应用程序</td>
+</tr>
+<tr>
+<td align="left">var</td>
+<td align="left">代表URL的变量名</td>
+<td align="left">否</td>
+<td align="left">Print to page</td>
+</tr>
+<tr>
+<td align="left">scope</td>
+<td align="left">var属性的作用域</td>
+<td align="left">否</td>
+<td align="left">Page</td>
+</tr>
+</tbody></table>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> prefix=<span class="string">"c"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;c:url 标签实例&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;&amp;lt;c:url&amp;gt实例 Demo&lt;/h1&gt;</span><br><span class="line">    &lt;a href=<span class="string">"&lt;c:url value="</span>http:<span class="comment">//www.baidu.com"/&gt;"&gt;</span></span><br><span class="line">     这个链接通过 &amp;lt;c:url&amp;gt; 标签生成。</span><br><span class="line">    &lt;/a&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>作业：完成登录后跳转至用户信息列表，列表使用分页进行显示</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="/music/dshh.flac">
+            </audio>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
